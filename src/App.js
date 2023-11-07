@@ -5,8 +5,9 @@ import { useState } from "react";
 function App() {
   const colorCalculator = require('./ColorCalculator.js');
 
-  const [geneList1, setGeneList1] = useState({ "a": ["A", "_"], "b": ["B", "_"], "c": ["C", "_"], "d": ["D", "_"], "g": ["G", "_"] });
-  const [geneList2, setGeneList2] = useState({ "a": ["A", "_"], "b": ["B", "_"], "c": ["C", "_"], "d": ["D", "_"], "g": ["G", "_"] });
+  const defaultSelectValues = { "a": ["A", "_"], "b": ["B", "_"], "c": ["C", "_"], "d": ["D", "_"], "g": ["G", "_"] };
+  const [geneList1, setGeneList1] = useState(defaultSelectValues);
+  const [geneList2, setGeneList2] = useState(defaultSelectValues);
   const [resultList, setResultList] = useState([]);
 
   const dominanceOrder = {
@@ -67,17 +68,16 @@ function App() {
 
       <div className="grid grid-cols-1 place-items-center">
         {
-          resultList.length === 0 ? null : (
+          resultList && resultList.length > 0 ?
             <div className="result-container rounded-lg py-3 px-4 w-60 h-fit">
-              <ul className="list-none">
+              <ul>
                 {resultList.map(resultStr => {
                   return (
                     <li>{resultStr}</li>
                   );
                 })}
               </ul>
-            </div>
-          )
+            </div> : null
         }
       </div>
 

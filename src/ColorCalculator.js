@@ -1,3 +1,5 @@
+//TODO: replace for-loops with foreach or map
+
 function findPossibleCombinations(geneList1, geneList2, dominanceOrder, setResultList) {
   const genePairCombinations = getPairCombinations(geneList1, geneList2, dominanceOrder);
   const offspringCombinations = getCombinations(genePairCombinations);
