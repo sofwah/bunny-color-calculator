@@ -2,14 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .cont {
   background-color: #dee6eb;
   min-height: 100vh;
-}
-
-.bunny-img {
-  width: 200px;
 }
 
 .gene-pair {
@@ -19,10 +14,6 @@
 .gene-select {
   border-color: #ced0d4;
   border-width: 0.5px;
-}
-
-.row {
-  width: 100%;
 }
 
 .result-container {
