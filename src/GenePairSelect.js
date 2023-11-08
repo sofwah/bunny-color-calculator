@@ -19,7 +19,7 @@ export function GenePairSelect({ locus, optionList, selectedGeneList, handleSele
   }
 
   return (
-    <div className="gene-pair mx-0.5">
+    <div className="gene-pair mx-[2px]">
         {createGeneSelect(0)}
         {createGeneSelect(1)}
     </div>
