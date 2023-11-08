@@ -24,16 +24,9 @@ export function Bunny({ selectedGeneList, setGeneList }) {
 
   function handleSelectorChange(key, listIdx, selectedValue) {
     setGeneList((currentGeneList) => {
-      if (listIdx === 0) {
-        return {
-          ...currentGeneList,
-          [key]: [selectedValue, currentGeneList[key][1]]
-        };
-      } else {
-        return {
-          ...currentGeneList,
-          [key]: [currentGeneList[key][0], selectedValue]
-        };
+      return {
+        ...currentGeneList,
+        [key]: (listIdx === 0) ? [selectedValue, currentGeneList[key][1]] : [currentGeneList[key][0], selectedValue]
       }
     });
   }
