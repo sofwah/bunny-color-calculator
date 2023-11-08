@@ -1,15 +1,13 @@
-export function GenePairSelect({ locus, optionList, selectedGeneList, handleSelectorChange }) {
+import { dominanceOrder } from './constants.js';
+
+export function GenePairSelect({ locus, selectedGeneList, handleSelectorChange }) {
   const genePair = selectedGeneList[locus];
+  const optionList = dominanceOrder[locus];
 
   function createGeneSelect(idx) {
     return (
-      <select onChange={(e) => handleSelectorChange(locus, idx, e.target.value)} className="gene-select mx-px rounded-sm">
+      <select value={genePair[idx]} onChange={(e) => handleSelectorChange(locus, idx, e.target.value)} className="gene-select mx-px rounded-sm">
         {optionList.map(optionStr => {
-          if (optionStr === genePair[idx]) {
-            return (
-              <option value={optionStr} selected>{optionStr}</option>
-            );
-          }
           return (
             <option value={optionStr}>{optionStr}</option>
           );

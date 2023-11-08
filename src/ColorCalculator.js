@@ -1,7 +1,9 @@
+import { dominanceOrder } from './constants.js';
+
 //TODO: replace for-loops with foreach or map
 
-function findPossibleCombinations(geneList1, geneList2, dominanceOrder, setResultList) {
-  const genePairCombinations = getPairCombinations(geneList1, geneList2, dominanceOrder);
+function findPossibleCombinations(geneList1, geneList2, setResultList) {
+  const genePairCombinations = getPairCombinations(geneList1, geneList2);
   const offspringCombinations = getCombinations(genePairCombinations);
   const simplifiedCombinations = simplifyCombinations(offspringCombinations);
   const colorStrings = countColorVariations(simplifiedCombinations);
@@ -10,7 +12,7 @@ function findPossibleCombinations(geneList1, geneList2, dominanceOrder, setResul
 }
 
 // Returns a dictionary with all possible pair combination for each locus
-function getPairCombinations(geneList1, geneList2, dominanceOrder) {
+function getPairCombinations(geneList1, geneList2) {
   const genePairCombinations = {};
 
   for (const locus in geneList1) {
@@ -26,7 +28,7 @@ function getPairCombinations(geneList1, geneList2, dominanceOrder) {
 
     // Re-arrange gene pairs by dominance
     combinations = combinations.map(([gene1, gene2]) => {
-      const locusDominanceOrder = dominanceOrder[locus];
+      let locusDominanceOrder = dominanceOrder[locus];
       // Sort the gene pair based on the dominance order
       return [gene1, gene2].sort((a, b) => locusDominanceOrder.indexOf(a) - locusDominanceOrder.indexOf(b));
     });
@@ -99,6 +101,4 @@ function countColorVariations(geneCombinations) {
   return resultStrings;
 }
 
-module.exports = {
-  findPossibleCombinations
-};
+export { findPossibleCombinations };

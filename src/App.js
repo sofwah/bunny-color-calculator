@@ -1,55 +1,13 @@
 import './styles.css';
 import { Bunny } from './Bunny.js';
-import { useState } from "react";
+import { useState } from 'react';
+import { findPossibleCombinations } from './colorCalculator.js';
 
 function App() {
-  const colorCalculator = require('./ColorCalculator.js');
-
   const defaultGeneSelectValues = { "a": ["A", "_"], "b": ["B", "_"], "c": ["C", "_"], "d": ["D", "_"], "g": ["G", "_"] };
   const [geneList1, setGeneList1] = useState(defaultGeneSelectValues);
   const [geneList2, setGeneList2] = useState(defaultGeneSelectValues);
   const [resultList, setResultList] = useState([]);
-
-  const dominanceOrder = {
-    "a": ["A", "achi", "am", "an", "a", "_"],
-    "b": ["Be", "B", "bj", "b", "_"],
-    "c": ["C", "c", "_"],
-    "d": ["D", "d", "_"],
-    "g": ["G", "go", "g", "_"],
-  };
-
-
-  function handleSelectorChange1(key, listIdx, selectedValue) {
-    setGeneList1((currentGeneList) => {
-      if (listIdx === 0) {
-        return {
-          ...currentGeneList,
-          [key]: [selectedValue, currentGeneList[key][1]]
-        };
-      } else {
-        return {
-          ...currentGeneList,
-          [key]: [currentGeneList[key][0], selectedValue]
-        };
-      }
-    });
-  }
-
-  function handleSelectorChange2(key, listIdx, selectedValue) {
-    setGeneList2((currentGeneList) => {
-      if (listIdx === 0) {
-        return {
-          ...currentGeneList,
-          [key]: [selectedValue, currentGeneList[key][1]]
-        };
-      } else {
-        return {
-          ...currentGeneList,
-          [key]: [currentGeneList[key][0], selectedValue]
-        };
-      }
-    });
-  }
 
   return (
     <div className="cont relative">
@@ -58,12 +16,12 @@ function App() {
       </div>
 
       <div className="grid grid-cols-2 place-items-center my-5">
-        <Bunny selectedGeneList={geneList1} handleSelectorChange={handleSelectorChange1} dominanceOrder={dominanceOrder}/>
-        <Bunny selectedGeneList={geneList2} handleSelectorChange={handleSelectorChange2} dominanceOrder={dominanceOrder}/>
+        <Bunny selectedGeneList={geneList1} setGeneList={setGeneList1} />
+        <Bunny selectedGeneList={geneList2} setGeneList={setGeneList2} />
       </div>
 
       <div className="grid grid-cols-1 py-6 place-items-center">
-        <button onClick={() => colorCalculator.findPossibleCombinations(geneList1, geneList2, dominanceOrder, setResultList)} className="w-fit bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 rounded shadow">Resultat</button>
+        <button onClick={() => findPossibleCombinations(geneList1, geneList2, setResultList)} className="w-fit bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 rounded shadow">Resultat</button>
       </div>
 
       <div className="grid grid-cols-1 place-items-center pb-12">
