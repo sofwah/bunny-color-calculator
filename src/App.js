@@ -2,9 +2,9 @@ import './styles.css';
 import { Bunny } from './Bunny.js';
 import { useState } from 'react';
 import { findPossibleCombinations } from './colorCalculator.js';
+import { defaultGeneSelectValues } from './constants.js';
 
 function App() {
-  const defaultGeneSelectValues = { "a": ["A", "_"], "b": ["B", "_"], "c": ["C", "_"], "d": ["D", "_"], "g": ["G", "_"] };
   const [geneList1, setGeneList1] = useState(defaultGeneSelectValues);
   const [geneList2, setGeneList2] = useState(defaultGeneSelectValues);
   const [resultList, setResultList] = useState([]);

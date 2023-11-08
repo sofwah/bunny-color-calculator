@@ -1,3 +1,5 @@
+const defaultGeneSelectValues = { "a": ["A", "_"], "b": ["B", "_"], "c": ["C", "_"], "d": ["D", "_"], "g": ["G", "_"] };
+
 const dominanceOrder = {
   "a": ["A", "achi", "am", "an", "a", "_"],
   "b": ["Be", "B", "bj", "b", "_"],
@@ -58,6 +60,7 @@ const colorList = Object.keys(colorDictionary);
 
 
 export {
+  defaultGeneSelectValues,
   dominanceOrder,
   lociList,
   colorDictionary,

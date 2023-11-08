@@ -1,7 +1,7 @@
 import bunny_silhouette from './rabbit_silhouette.png';
 import { useState, useEffect } from 'react';
 import { GenePairSelect } from './GenePairSelect.js';
-import { lociList, colorList, colorDictionary } from './constants.js';
+import { defaultGeneSelectValues, lociList, colorList, colorDictionary } from './constants.js';
 
 export function Bunny({ selectedGeneList, setGeneList }) {
   const [selectedColor, setSelectedColor] = useState("default");
@@ -9,7 +9,7 @@ export function Bunny({ selectedGeneList, setGeneList }) {
   useEffect(() => {
     setGeneList(() => {
       const geneCodeList = colorDictionary[selectedColor];
-      if (!geneCodeList) return { "a": ["A", "_"], "b": ["B", "_"], "c": ["C", "_"], "d": ["D", "_"], "g": ["G", "_"] };
+      if (!geneCodeList) return defaultGeneSelectValues; //selected color value is default
       const geneCodeSublists = [];
       for (let i = 0; i < geneCodeList.length; i += 2) {
         geneCodeSublists.push([geneCodeList[i], geneCodeList[i + 1]]);
