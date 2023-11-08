@@ -40,7 +40,7 @@ function App() {
       </div>
 
       <div className="absolute bottom-0 w-full pb-2">
-        <p className="copyright-text text-center italic">© Sofia Wahlmark 2023. All rights reserved.</p>
+        <p className="copyright-text text-center italic text-sm">© Sofia Wahlmark 2023. All rights reserved.</p>
       </div>
     </div>
   );

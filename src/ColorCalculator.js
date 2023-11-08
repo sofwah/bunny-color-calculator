@@ -1,4 +1,4 @@
-import { dominanceOrder } from './constants.js';
+import { dominanceOrder, geneCodeDictionary } from './constants.js';
 
 //TODO: replace for-loops with foreach or map
 
@@ -95,7 +95,7 @@ function countColorVariations(geneCombinations) {
   const resultStrings = [];
 
   for (const key in combinationCounts) {
-    resultStrings.push(`${key} ${Math.round((combinationCounts[key]/sum) * 100*10)/10}%`);
+    resultStrings.push(`${geneCodeDictionary[key] || key} ${Math.round((combinationCounts[key]/sum) * 100*10)/10}%`);
   }
 
   return resultStrings;

@@ -24,20 +24,21 @@ const colorDictionary = {
 
   "Egern": ["A", "_", "B", "_", "c", "c", "d", "d", "g", "g"],
   "​Havana": ["A", "_", "B", "_", "c", "c", "D", "_", "g", "g"],
-  "Isabella": ["A", "_", "b", "b", "_", "C", "_", "d", "d", "_", "g", "g"],
+  "Isabella": ["A", "_", "b", "b", "C", "_", "d", "d", "g", "g"],
 
-  "Japantecknad gul/blå": ["A", "_", "bj", "_", "C", "C", "d", "d", "_", "_"],
-  "Japantecknad gul/brun": ["A", "_", "bj", "_", "c", "c", "D", "_", "_", "_"],
-  "Japantecknad gul/egern": ["A", "_", "bj", "_", "c", "c", "d", "d", "_", "_"],
+  //kan ha viltanlag också
+  "Japantecknad gul/blå": ["A", "_", "bj", "_", "C", "C", "d", "d", "g", "g"],
+  "Japantecknad gul/brun": ["A", "_", "bj", "_", "c", "c", "D", "_", "g", "g"],
+  "Japantecknad gul/egern": ["A", "_", "bj", "_", "c", "c", "d", "d", "g", "g"],
   "Japantecknad gul/svart": ["A", "_", "bj", "_", "C", "_", "D", "_", "G", "_"],
   "Japantecknad zobel/svart": ["am", "_", "bj", "_", "C", "_", "D", "_", "g", "g"],
   //"Japantecknad zobel/blå":
   //"Japantecknad zobel/havana":
   //"Japantecknad zobel/egern":
-  "Japantecknad vit/blå": ["achi", "_", "bj", "_", "C", "_", "d", "d", "_", "_"],
+  //"Japantecknad vit/blå": ["achi", "_", "bj", "_", "C", "_", "d", "d", "_", "_"],
   //"Japantecknad vit/havana":
   //"Japantecknad vit/egern":
-  "Japantecknad vit/svart": ["achi", "_", "bj", "_", "C", "_", "D", "_", "_", "_"],
+  //"Japantecknad vit/svart": ["achi", "_", "bj", "_", "C", "_", "D", "_", "_", "_"],
 
   "Järnblå med viltanlag":   ["A", "_", "Be", "_", "C", "_", "d", "d", "G", "_"],
   "Järnbrun med viltanlag":  ["A", "_", "Be", "_", "c", "c", "D", "_", "G", "_"],
@@ -53,16 +54,31 @@ const colorDictionary = {
   //"Järnchinchilla": ["achi", "_", "Be", "_", "C", "_", "D", "_", "G", "_"],?
   //"Järnzobel"
 
+  "Svart": ["A", "_", "B", "_", "C", "_", "D", "_", "g", "g"],
+  "Viltgrå": ["A", "_", "B", "_", "C", "_", "D", "_", "G", "_"],
   // TODO: add remaining colors
 }
 
 const colorList = Object.keys(colorDictionary);
 
+// colorDictionary with keys and values swapped and genecode simplified to only conatin dominant values
+const geneCodeDictionary = {};
+for (const color in colorDictionary) {
+  if (colorDictionary.hasOwnProperty(color)) {
+    const geneCode = colorDictionary[color];
+    const simplifiedGeneCode = [];
+    for (let i = 0; i < geneCode.length; i += 2) {
+      simplifiedGeneCode.push(geneCode[i]);
+    }
+    geneCodeDictionary[simplifiedGeneCode] = color;
+  }
+}
 
 export {
   defaultGeneSelectValues,
   dominanceOrder,
   lociList,
   colorDictionary,
-  colorList
+  colorList,
+  geneCodeDictionary
 }
