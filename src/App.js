@@ -27,7 +27,7 @@ function App() {
       <div className="grid grid-cols-1 place-items-center pb-12">
         {
           resultList && resultList.length > 0 ?
-            <div className="result-container rounded-lg py-3 px-4 w-60 h-fit">
+            <div className="result-container rounded-lg py-3 px-4 w-[390px] h-fit">
               <ul>
                 {resultList.map(resultStr => {
                   return (
@@ -40,7 +40,7 @@ function App() {
       </div>
 
       <div className="absolute bottom-0 w-full pb-2">
-        <p className="copyright-text text-center italic text-sm">© Sofia Wahlmark 2023. All rights reserved.</p>
+        <p className="copyright-text text-center italic text-sm">© Sofia Wahlmark 2023</p>
       </div>
     </div>
   );

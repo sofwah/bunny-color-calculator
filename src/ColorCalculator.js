@@ -1,4 +1,5 @@
-import { dominanceOrder, geneCodeDictionary } from './constants.js';
+import { dominanceOrder } from './constants.js';
+import { geneCodeDict } from './geneColorDict.js';
 
 //TODO: replace for-loops with foreach or map
 
@@ -86,7 +87,12 @@ function countColorVariations(geneCombinations) {
     combinationCounts[combination] = (combinationCounts[combination] || 0) + 1;
   }
 
-  const counts = Object.values(combinationCounts);
+  // Sort so largest occurence is first
+  const sortedCombinationCounts = Object.fromEntries(
+    Object.entries(combinationCounts).sort((a, b) => b[1] - a[1])
+  );
+
+  const counts = Object.values(sortedCombinationCounts);
   let sum = 0;
   counts.forEach( num => {
     sum += num;
@@ -94,8 +100,8 @@ function countColorVariations(geneCombinations) {
 
   const resultStrings = [];
 
-  for (const key in combinationCounts) {
-    resultStrings.push(`${geneCodeDictionary[key] || key} ${Math.round((combinationCounts[key]/sum) * 100*10)/10}%`);
+  for (const key in sortedCombinationCounts) {
+    resultStrings.push(`${geneCodeDict[key] || key} ${Math.round((sortedCombinationCounts[key]/sum) * 100*10)/10}%`);
   }
 
   return resultStrings;

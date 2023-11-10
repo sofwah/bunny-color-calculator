@@ -77,8 +77,5 @@ for (const color in colorDictionary) {
 export {
   defaultGeneSelectValues,
   dominanceOrder,
-  lociList,
-  colorDictionary,
-  colorList,
-  geneCodeDictionary
+  lociList
 }

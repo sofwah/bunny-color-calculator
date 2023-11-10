@@ -23,4 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # other
-script.py
+gene_code_as_list.py
+gene_code_generator.py
+gene_code_output_file.txt
