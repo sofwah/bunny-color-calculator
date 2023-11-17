@@ -44,7 +44,7 @@ export function Bunny({ selectedGeneList, setGeneList }) {
 
           {colorList.map(color => {
             return (
-              <option value={color}>{color}</option>
+              <option key={crypto.randomUUID()} value={color}>{color}</option>
             )
           })}
         </select>
@@ -52,7 +52,7 @@ export function Bunny({ selectedGeneList, setGeneList }) {
 
       {lociList.map(locus => {
         return (
-          <GenePairSelect locus={locus} selectedGeneList={selectedGeneList} handleSelectorChange={handleSelectorChange}/>
+          <GenePairSelect key={crypto.randomUUID()} locus={locus} selectedGeneList={selectedGeneList} handleSelectorChange={handleSelectorChange}/>
         )
       })}
 

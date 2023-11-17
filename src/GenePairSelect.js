@@ -9,7 +9,7 @@ export function GenePairSelect({ locus, selectedGeneList, handleSelectorChange }
       <select value={genePair[idx]} onChange={(e) => handleSelectorChange(locus, idx, e.target.value)} className="gene-select mx-px rounded-sm">
         {optionList.map(optionStr => {
           return (
-            <option value={optionStr}>{optionStr}</option>
+            <option key={crypto.randomUUID()} value={optionStr}>{optionStr}</option>
           );
         })}
       </select>
