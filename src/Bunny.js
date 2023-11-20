@@ -4,8 +4,7 @@ import { GenePairSelect } from './GenePairSelect.js';
 import { defaultGeneSelectValues, lociList } from './constants.js';
 import { colorDict, colorList } from './geneColorDict.js';
 
-export function Bunny({ selectedGeneList, setGeneList }) {
-  const [selectedColor, setSelectedColor] = useState("default");
+export function Bunny({ selectedGeneList, setGeneList, selectedColor, setSelectedColor }) {
 
   useEffect(() => {
     setGeneList(() => {
