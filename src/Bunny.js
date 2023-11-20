@@ -33,7 +33,7 @@ export function Bunny({ selectedGeneList, setGeneList }) {
   }
 
   return (
-    <div className="w-fit h-fit mx-3">
+    <div className="max-w-fit h-fit mx-3">
       <div className="grid grid-cols-1 place-items-center">
         <img src={bunny_silhouette} className="w-[200px]" alt="Bunny silhouette" />
       </div>

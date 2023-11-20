@@ -15,9 +15,13 @@ function App() {
         <p className="font-semibold text-3xl text-center">Välj färg eller fyll i genkoderna för föräldrarna</p>
       </div>
 
-      <div className="grid grid-cols-2 place-items-center my-5">
-        <Bunny selectedGeneList={geneList1} setGeneList={setGeneList1} />
-        <Bunny selectedGeneList={geneList2} setGeneList={setGeneList2} />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 my-5">
+        <div className="w-full grid grid-cols-1 place-items-center md:place-items-end">
+          <Bunny selectedGeneList={geneList1} setGeneList={setGeneList1} />
+        </div>
+        <div className="w-full grid grid-cols-1 place-items-center md:place-items-start">
+          <Bunny selectedGeneList={geneList2} setGeneList={setGeneList2} />
+        </div>
       </div>
 
       <div className="grid grid-cols-1 py-6 place-items-center">
