@@ -1,4 +1,5 @@
-// TODO: add Xx (vit blåögd/wienertecknad) and Yy1y2y3 (rödförstärkning)
+// TODO: add KwoKk (vitörad, brokad/mantlad), Xx (vit blåögd/wienertecknad), Yy1y2y3 (rödförstärkning), s1s2s3 (holländarteckning), p1p2p3 (silver)
+// hotot = Kk s1 s2 s3
 
 const colorDict = {
   /*
