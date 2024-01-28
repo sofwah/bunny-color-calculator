@@ -43,3 +43,8 @@ This React project is a simple bunny color calculator that helps determine the p
 3. Input the colors of both bunny parents using the color picker or by entering gene codes.
 
 4. Explore the predicted color outcomes for the bunny offspring.
+
+# License
+
+All rights reserved. No permission is granted to use, modify, or distribute the code in this repository without explicit written permission.
+

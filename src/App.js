@@ -59,7 +59,7 @@ function App() {
       </div>
 
       <div className="absolute bottom-0 w-full pb-2">
-        <p className="copyright-text text-center italic text-sm">© Sofia Wahlmark 2023</p>
+        <p className="copyright-text text-center italic text-sm">© Sofia Wahlmark 2024. All rights reserved.</p>
       </div>
     </div>
   );
