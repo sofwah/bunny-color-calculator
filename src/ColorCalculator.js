@@ -3,6 +3,14 @@ import { geneCodeDict } from './geneColorDict.js';
 
 //TODO: replace for-loops with foreach or map
 
+function getColorFromCode(geneList) {
+  const simplifiedGeneList = [];
+  for (const genePair of Object.values(geneList)) {
+    simplifiedGeneList.push(genePair[0])
+  }
+  return geneCodeDict[simplifiedGeneList] || 'default';
+}
+
 function findPossibleCombinations(geneList1, geneList2, setResultList) {
   const genePairCombinations = getPairCombinations(geneList1, geneList2);
   const offspringCombinations = getCombinations(genePairCombinations);
@@ -62,7 +70,7 @@ function getCombinations(geneDict) {
   return allGeneCombinations;
 }
 
-// Maybe remove this and use complete gene pairs to map to colors?
+// TODO: In the future potentially remove this and use complete gene pairs to map to colors
 // Removes the hidden gene in the gene pair
 function simplifyCombinations(combinations) {
   const simplifiedCombinations = [];
@@ -107,4 +115,4 @@ function countColorVariations(geneCombinations) {
   return resultStrings;
 }
 
-export { findPossibleCombinations };
+export { findPossibleCombinations, getColorFromCode };

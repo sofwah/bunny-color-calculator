@@ -1,4 +1,4 @@
-const defaultGeneSelectValues = { "a": ["A", "_"], "b": ["B", "_"], "c": ["C", "_"], "d": ["D", "_"], "g": ["G", "_"] };
+const defaultGeneSelectValues = { "a": ["_", "_"], "b": ["_", "_"], "c": ["_", "_"], "d": ["_", "_"], "g": ["_", "_"] };
 
 const dominanceOrder = {
   "a": ["A", "achi", "am", "an", "a", "_"],

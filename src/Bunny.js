@@ -3,24 +3,38 @@ import { useState, useEffect } from 'react';
 import { GenePairSelect } from './GenePairSelect.js';
 import { defaultGeneSelectValues, lociList } from './constants.js';
 import { colorDict, colorList } from './geneColorDict.js';
+import { getColorFromCode } from './colorCalculator.js';
 
 export function Bunny({ selectedGeneList, setGeneList, selectedColor, setSelectedColor }) {
+  // TODO: Change for useCallback or useMemo? Need selectedColor and selectedGeneList to listen to eachother but avoid infinite loop.
+  let selectedColorCopy;
+  let selectedGeneListCopy;
 
   useEffect(() => {
-    setGeneList(() => {
-      const geneCodeList = colorDict[selectedColor];
-      if (!geneCodeList) return defaultGeneSelectValues; //selected color value is default
-      const geneCodeSublists = [];
-      for (let i = 0; i < geneCodeList.length; i += 2) {
-        geneCodeSublists.push([geneCodeList[i], geneCodeList[i + 1]]);
-      }
-      const dict = {};
-      for (let i = 0; i < lociList.length; i += 1) {
-        dict[lociList[i]] = geneCodeSublists[i];
-      }
-      return dict;
-    });
+    if (selectedColorCopy !== selectedColor && selectedColor !== 'default') {
+      setGeneList(() => {
+        const geneCodeList = colorDict[selectedColor];
+        if (!geneCodeList) return defaultGeneSelectValues; //selected color value is default
+        const geneCodeSublists = [];
+        for (let i = 0; i < geneCodeList.length; i += 2) {
+          geneCodeSublists.push([geneCodeList[i], geneCodeList[i + 1]]);
+        }
+        const dict = {};
+        for (let i = 0; i < lociList.length; i += 1) {
+          dict[lociList[i]] = geneCodeSublists[i];
+        }
+        return dict;
+      });
+      selectedColorCopy = selectedColor
+    }
   }, [selectedColor]);
+
+  useEffect(() => {
+    if (selectedGeneListCopy !== selectedGeneList) {
+      setSelectedColor(getColorFromCode(selectedGeneList));
+      selectedGeneListCopy = selectedGeneList;
+    }
+  }, [selectedGeneList]);
 
   function handleSelectorChange(key, listIdx, selectedValue) {
     setGeneList((currentGeneList) => {
