@@ -50,7 +50,7 @@ function App() {
               <ul>
                 {resultList.map(resultStr => {
                   return (
-                    <li>{resultStr}</li>
+                    <li key={crypto.randomUUID()}>{resultStr}</li>
                   );
                 })}
               </ul>
