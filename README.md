@@ -15,7 +15,7 @@ This React project is a simple bunny color calculator that helps determine the p
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/kaninfarg.git
+    git clone https://github.com/sofwah/bunny-color-calculator.git
     ```
 
 2. Navigate to the project directory:
