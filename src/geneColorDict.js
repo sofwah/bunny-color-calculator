@@ -2,7 +2,7 @@
 // hotot = Kk s1 s2 s3
 
 // A dictionary mapping every color to its gene code
-const COLOR_DICT = {
+const COLOR_TO_GENE_DICT = {
   /*
   BeB och BeBe är inte samma...
   "Järngrå": ["A", "_", "Be", "_", "C", "_", "D", "_", "G", "_"],
@@ -231,10 +231,10 @@ const COLOR_DICT = {
   ["an", "_", "b", "b", "c", "c", "d", "d", "go", "_"],
   ["an", "_", "b", "b", "c", "c", "d", "d", "g", "g"],*/
 
-  //Look over how "_" are handled when retrieving color from GENE_CODE_DICT
+  //Look over how "_" are handled when retrieving color from GENE_TO_COLOR_DICT
   /*"Vit rödögd": ["a", "a", "_", "_", "_", "_", "_", "_", "_", "_"],*/
 
-  //Flytta till egen dict som inkluderas i GENE_CODE_DICT så att de inte finns i listan men presenteras som resultatfärg
+  //Flytta till egen dict som inkluderas i GENE_TO_COLOR_DICT så att de inte finns i listan men presenteras som resultatfärg
   //Namnge med dold färg inom parantes
   /*["a", "a", "Be", "_", "C", "_", "D", "_", "G", "_"],
   ["a", "a", "Be", "_", "C", "_", "D", "_", "go", "_"],
@@ -290,24 +290,24 @@ const COLOR_DICT = {
 }
 
 // A list of all available colors to be shown in the color drop-down
-const COLOR_LIST = Object.keys(COLOR_DICT).sort();
+const COLOR_LIST = Object.keys(COLOR_TO_GENE_DICT).sort();
 
-// A reversed version of COLOR_DICT, where the gene codes are shortened.
+// A reversed version of COLOR_TO_GENE_DICT, where the gene codes are shortened.
 // E.g. { A,B,C,D,G: "Viltgrå", ... }
-const GENE_CODE_DICT = {};
-for (const color in COLOR_DICT) {
-  if (COLOR_DICT.hasOwnProperty(color)) {
-    const geneCode = COLOR_DICT[color];
+const GENE_TO_COLOR_DICT = {};
+for (const color in COLOR_TO_GENE_DICT) {
+  if (COLOR_TO_GENE_DICT.hasOwnProperty(color)) {
+    const geneCode = COLOR_TO_GENE_DICT[color];
     const simplifiedGeneCode = [];
     for (let i = 0; i < geneCode.length; i += 2) {
       simplifiedGeneCode.push(geneCode[i]);
     }
-    GENE_CODE_DICT[simplifiedGeneCode] = color;
+    GENE_TO_COLOR_DICT[simplifiedGeneCode] = color;
   }
 }
 
 export {
-  COLOR_DICT,
-  GENE_CODE_DICT,
+  COLOR_TO_GENE_DICT,
+  GENE_TO_COLOR_DICT,
   COLOR_LIST
 }
