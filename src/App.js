@@ -22,24 +22,50 @@ function App() {
   return (
     <div className="cont relative">
       <div className="grid grid-cols-1 py-8">
-        <p className="font-semibold text-3xl text-center">Välj färg eller fyll i genkoderna för föräldrarna</p>
+        <p className="font-semibold text-3xl text-center">
+          Välj färg eller fyll i genkoderna för föräldrarna
+        </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2 place-items-center my-5">
         <div className="w-full grid grid-cols-1 place-items-center md:place-items-end">
-          <Bunny selectedGeneList={geneList1} setGeneList={setGeneList1} selectedColor={selectedColor1} setSelectedColor={setSelectedColor1} />
+          <Bunny
+            selectedGeneList={geneList1}
+            setGeneList={setGeneList1}
+            selectedColor={selectedColor1}
+            setSelectedColor={setSelectedColor1}
+          />
         </div>
         <div className="w-full grid grid-cols-1 place-items-center md:place-items-start">
-          <Bunny selectedGeneList={geneList2} setGeneList={setGeneList2} selectedColor={selectedColor2} setSelectedColor={setSelectedColor2} />
+          <Bunny
+            selectedGeneList={geneList2}
+            setGeneList={setGeneList2}
+            selectedColor={selectedColor2}
+            setSelectedColor={setSelectedColor2}
+          />
         </div>
       </div>
 
       <div className="grid grid-cols-2 gap-4 place-items-center py-6">
         <div className="w-full grid grid-cols-1 place-items-end">
-          <button onClick={() => findPossibleCombinations(geneList1, geneList2, setResultList)} className="w-fit bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 rounded shadow">Resultat</button>
+          <button
+            onClick={() => findPossibleCombinations(
+              geneList1, geneList2, setResultList
+            )}
+            className="w-fit bg-white hover:bg-gray-100 text-gray-800
+            font-semibold py-2 px-4 rounded shadow"
+          >
+            Resultat
+          </button>
         </div>
         <div className="w-full grid grid-cols-1 place-items-start">
-          <button onClick={() => resetPage()} className="w-fit bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 rounded shadow">Återställ</button>
+          <button
+            onClick={() => resetPage()}
+            className="w-fit bg-white hover:bg-gray-100 text-gray-800
+            font-semibold py-2 px-4 rounded shadow"
+          >
+            Återställ
+          </button>
         </div>
       </div>
 
@@ -59,7 +85,9 @@ function App() {
       </div>
 
       <div className="absolute bottom-0 w-full pb-2">
-        <p className="copyright-text text-center italic text-sm">© Sofia Wahlmark 2024. All rights reserved.</p>
+        <p className="copyright-text text-center italic text-sm">
+          © Sofia Wahlmark 2024. All rights reserved.
+        </p>
       </div>
     </div>
   );
