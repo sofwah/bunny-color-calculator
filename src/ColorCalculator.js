@@ -6,9 +6,11 @@ import { GENE_TO_COLOR_DICT } from './geneColorDict.js';
 /**
  * Used to get the color from the gene list used in the gene pair dropdowns.
  *
- * @param {Object} geneList A dictionary with locus (a, b, c, d, g) as keys and a list with a gene pair as value, {a -> ['A', 'a'], ...}.
+ * @param {Object} geneList A dictionary with locus (a, b, c, d, g) as keys and a list with
+ *                          a gene pair as value, {a -> ['A', 'a'], ...}.
  * @returns {String} Color corresponding to gene code if available, otherwise default.
  */
+
 function getColorFromCode(geneList) {
   const simplifiedGeneList = [];
   for (const genePair of Object.values(geneList)) {
@@ -20,10 +22,13 @@ function getColorFromCode(geneList) {
 /**
  * Gives all possible color combinations as a list with the probabilities in descending order.
  *
- * @param {Object} geneList1 A dictionary with locus (a, b, c, d, g) as keys and a list with a gene pair as value, {a -> ['A', 'a'], ...}.
- * @param {Object} geneList2 A dictionary with locus (a, b, c, d, g) as keys and a list with a gene pair as value, {a -> ['A', 'a'], ...}.
+ * @param {Object} geneList1 A dictionary with locus (a, b, c, d, g) as keys and a list with a
+ *                           gene pair as value, {a -> ['A', 'a'], ...}.
+ * @param {Object} geneList2 A dictionary with locus (a, b, c, d, g) as keys and a list with a
+ *                           gene pair as value, {a -> ['A', 'a'], ...}.
  * @param {Function} setResultList Function to set the value of the resultList state.
- * @returns {String[]} List of strings where each element is a color if available (otherwise gene code) and it's probability, ordered with the highest probability first.
+ * @returns {String[]} List of strings where each element is a color if available (otherwise gene
+ *                     code) and it's probability, ordered with the highest probability first.
  */
 function findPossibleCombinations(geneList1, geneList2, setResultList) {
   const genePairCombinations = getPairCombinations(geneList1, geneList2);
@@ -37,9 +42,12 @@ function findPossibleCombinations(geneList1, geneList2, setResultList) {
 /**
  * A dictionary with all possible pair combination for each loci
  *
- * @param {Object} geneList1 A dictionary with locus (a, b, c, d, g) as keys and a list with a gene pair as value, {a -> ['A', 'a'], ...}.
- * @param {Object} geneList2 A dictionary with locus (a, b, c, d, g) as keys and a list with a gene pair as value, {a -> ['A', 'a'], ...}.
- * @returns {Object} Dictionary with all possible pair combinations for each loci (pairs sorted in dominance order), {a -> [['A', 'A'], ['A', 'achi'], ...], ...}.
+ * @param {Object} geneList1 A dictionary with locus (a, b, c, d, g) as keys and a list with a
+ *                           gene pair as value, {a -> ['A', 'a'], ...}.
+ * @param {Object} geneList2 A dictionary with locus (a, b, c, d, g) as keys and a list with a
+ *                           gene pair as value, {a -> ['A', 'a'], ...}.
+ * @returns {Object} Dictionary with all possible pair combinations for each loci (pairs sorted in
+ *                   dominance order), {a -> [['A', 'A'], ['A', 'achi'], ...], ...}.
  */
 function getPairCombinations(geneList1, geneList2) {
   const genePairCombinations = {};
@@ -59,7 +67,9 @@ function getPairCombinations(geneList1, geneList2) {
     combinations = combinations.map(([gene1, gene2]) => {
       let locusDominanceOrder = DOMINANCE_ORDER[locus];
       // Sort the gene pair based on the dominance order
-      return [gene1, gene2].sort((a, b) => locusDominanceOrder.indexOf(a) - locusDominanceOrder.indexOf(b));
+      return [gene1, gene2].sort(
+        (a, b) => locusDominanceOrder.indexOf(a) - locusDominanceOrder.indexOf(b)
+      );
     });
 
     genePairCombinations[locus] = combinations;
@@ -71,9 +81,11 @@ function getPairCombinations(geneList1, geneList2) {
 /**
  * Returns a list of gene combinations for all possible offsprings
  *
- * @param {Object} geneDict Dictionary with all possible pair combinations for each loci, {a -> [['A', 'A'], ['A', 'achi'], ...], ...}.
+ * @param {Object} geneDict Dictionary with all possible pair combinations for each loci,
+ *                          {a -> [['A', 'A'], ['A', 'achi'], ...], ...}.
  * @returns {String[][][]} List of all gene combinations for all possible offspring,
- *                         [[["A","A"],["B","B"],["C","C"],["D","D"],["G","G"]], [["A","A"],["B","B"],["C","C"],["D","D"],["G","_"]], ...]
+ *                         [[["A","A"],["B","B"],["C","C"],["D","D"],["G","G"]],
+ *                          [["A","A"],["B","B"],["C","C"],["D","D"],["G","_"]], ...]
  */
 function getCombinations(geneDict) {
   const loci = Object.values(geneDict);
@@ -96,11 +108,13 @@ function getCombinations(geneDict) {
 }
 
 /**
- * Removes the hidden gene in the gene pair in a list of all gene combinations for all possible offspring.
+ * Removes the hidden gene in the gene pair in a list of all gene combinations for all
+ * possible offspring.
  * TODO: In the future potentially remove this and use complete gene pairs to map to colors
  *
  * @param {String[][][]} combinations List of all gene combinations for all possible offspring,
- *                         [[["A","A"],["B","B"],["C","C"],["D","D"],["G","G"]], [["A","A"],["B","B"],["C","C"],["D","D"],["G","_"]], ...]
+ *                                    [[["A","A"],["B","B"],["C","C"],["D","D"],["G","G"]],
+ *                                     [["A","A"],["B","B"],["C","C"],["D","D"],["G","_"]], ...]
  * @returns {String[][]} Input param with gene pair list replaced with only the first gene.
  */
 function simplifyCombinations(combinations) {
@@ -119,8 +133,10 @@ function simplifyCombinations(combinations) {
 /**
  * Returns the list of possible colors and their percentage to be displayed in the result.
  *
- * @param {String[][]} geneCombinations [["A","B","C","D","G"], ["A","B","C","D","g"], ...], duplicates included.
- * @returns {String[]} List of strings with each simplified gene combination followed by its probability in percentage.
+ * @param {String[][]} geneCombinations [["A","B","C","D","G"], ["A","B","C","D","g"], ...],
+ *                                      duplicates included.
+ * @returns {String[]} List of strings with each simplified gene combination followed by its
+ *                     probability in percentage.
  */
 function countColorVariations(geneCombinations) {
   // Count the occurrence of each combination
@@ -144,7 +160,12 @@ function countColorVariations(geneCombinations) {
   const resultStrings = [];
 
   for (const key in sortedCombinationCounts) {
-    resultStrings.push(`${GENE_TO_COLOR_DICT[key] || key} ${Math.round((sortedCombinationCounts[key]/sum) * 100*10)/10}%`);
+    // Adds a line like "Viltgrå 4%"
+    resultStrings.push(
+      `${GENE_TO_COLOR_DICT[key] || key} ${
+        Math.round((sortedCombinationCounts[key] / sum) * 1000) / 10
+      }%`
+    );
   }
 
   return resultStrings;
