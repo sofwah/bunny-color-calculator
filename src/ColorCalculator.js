@@ -1,5 +1,5 @@
-import { dominanceOrder } from './constants.js';
-import { geneCodeDict } from './geneColorDict.js';
+import { DOMINANCE_ORDER } from './constants.js';
+import { GENE_CODE_DICT } from './geneColorDict.js';
 
 //TODO: replace for-loops with foreach or map
 
@@ -14,7 +14,7 @@ function getColorFromCode(geneList) {
   for (const genePair of Object.values(geneList)) {
     simplifiedGeneList.push(genePair[0])
   }
-  return geneCodeDict[simplifiedGeneList] || 'default';
+  return GENE_CODE_DICT[simplifiedGeneList] || 'default';
 }
 
 /**
@@ -57,7 +57,7 @@ function getPairCombinations(geneList1, geneList2) {
 
     // Re-arrange gene pairs by dominance
     combinations = combinations.map(([gene1, gene2]) => {
-      let locusDominanceOrder = dominanceOrder[locus];
+      let locusDominanceOrder = DOMINANCE_ORDER[locus];
       // Sort the gene pair based on the dominance order
       return [gene1, gene2].sort((a, b) => locusDominanceOrder.indexOf(a) - locusDominanceOrder.indexOf(b));
     });
@@ -144,7 +144,7 @@ function countColorVariations(geneCombinations) {
   const resultStrings = [];
 
   for (const key in sortedCombinationCounts) {
-    resultStrings.push(`${geneCodeDict[key] || key} ${Math.round((sortedCombinationCounts[key]/sum) * 100*10)/10}%`);
+    resultStrings.push(`${GENE_CODE_DICT[key] || key} ${Math.round((sortedCombinationCounts[key]/sum) * 100*10)/10}%`);
   }
 
   return resultStrings;

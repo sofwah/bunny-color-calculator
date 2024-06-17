@@ -1,8 +1,8 @@
-import { dominanceOrder } from './constants.js';
+import { DOMINANCE_ORDER } from './constants.js';
 
 export function GenePairSelect({ locus, selectedGeneList, handleSelectorChange }) {
   const genePair = selectedGeneList[locus];
-  const optionList = dominanceOrder[locus];
+  const optionList = DOMINANCE_ORDER[locus];
 
   function createGeneSelect(idx) {
     return (

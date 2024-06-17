@@ -1,8 +1,8 @@
 import bunny_silhouette from './rabbit_silhouette.png';
 import { useState, useEffect } from 'react';
 import { GenePairSelect } from './GenePairSelect.js';
-import { defaultGeneSelectValues, locusList } from './constants.js';
-import { colorDict, colorList } from './geneColorDict.js';
+import { DEFAULT_GENE_SELECT_VALUES, LOCUS_LIST } from './constants.js';
+import { COLOR_DICT, COLOR_LIST } from './geneColorDict.js';
 import { getColorFromCode } from './colorCalculator.js';
 
 export function Bunny({ selectedGeneList, setGeneList, selectedColor, setSelectedColor }) {
@@ -13,15 +13,15 @@ export function Bunny({ selectedGeneList, setGeneList, selectedColor, setSelecte
   useEffect(() => {
     if (selectedColorCopy !== selectedColor && selectedColor !== 'default') {
       setGeneList(() => {
-        const geneCodeList = colorDict[selectedColor];
-        if (!geneCodeList) return defaultGeneSelectValues; //selected color value is default
+        const geneCodeList = COLOR_DICT[selectedColor];
+        if (!geneCodeList) return DEFAULT_GENE_SELECT_VALUES; //selected color value is default
         const geneCodeSublists = [];
         for (let i = 0; i < geneCodeList.length; i += 2) {
           geneCodeSublists.push([geneCodeList[i], geneCodeList[i + 1]]);
         }
         const dict = {};
-        for (let i = 0; i < locusList.length; i += 1) {
-          dict[locusList[i]] = geneCodeSublists[i];
+        for (let i = 0; i < LOCUS_LIST.length; i += 1) {
+          dict[LOCUS_LIST[i]] = geneCodeSublists[i];
         }
         return dict;
       });
@@ -55,7 +55,7 @@ export function Bunny({ selectedGeneList, setGeneList, selectedColor, setSelecte
         <select value={selectedColor} onChange={e => setSelectedColor(e.target.value)} className="gene-select rounded-sm">
           <option value="default" disabled>Välj färg</option>
 
-          {colorList.map(color => {
+          {COLOR_LIST.map(color => {
             return (
               <option key={crypto.randomUUID()} value={color}>{color}</option>
             )
@@ -63,7 +63,7 @@ export function Bunny({ selectedGeneList, setGeneList, selectedColor, setSelecte
         </select>
       </div>
 
-      {locusList.map(locus => {
+      {LOCUS_LIST.map(locus => {
         return (
           <GenePairSelect key={crypto.randomUUID()} locus={locus} selectedGeneList={selectedGeneList} handleSelectorChange={handleSelectorChange}/>
         )

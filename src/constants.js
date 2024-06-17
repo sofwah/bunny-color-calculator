@@ -1,5 +1,5 @@
 // This is used to reset the gene pair drop-downs
-const defaultGeneSelectValues = {
+const DEFAULT_GENE_SELECT_VALUES = {
   "a": ["_", "_"],
   "b": ["_", "_"],
   "c": ["_", "_"],
@@ -9,7 +9,7 @@ const defaultGeneSelectValues = {
 
 // This describes the order of dominance within each locus.
 // E.g. A covers achi, achi covers am, and so on.
-const dominanceOrder = {
+const DOMINANCE_ORDER = {
   "a": ["A", "achi", "am", "an", "a", "_"],
   "b": ["Be", "B", "bj", "b", "_"],
   "c": ["C", "c", "_"],
@@ -18,10 +18,10 @@ const dominanceOrder = {
 };
 
 // A list of the available loci
-const locusList = Object.keys(dominanceOrder);
+const LOCUS_LIST = Object.keys(DOMINANCE_ORDER);
 
 export {
-  defaultGeneSelectValues,
-  dominanceOrder,
-  locusList
+  DEFAULT_GENE_SELECT_VALUES,
+  DOMINANCE_ORDER,
+  LOCUS_LIST
 }

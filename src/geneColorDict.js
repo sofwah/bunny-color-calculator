@@ -1,7 +1,8 @@
 // TODO: add KwoKk (vitörad, brokad/mantlad), Xx (vit blåögd/wienertecknad), Yy1y2y3 (rödförstärkning), s1s2s3 (holländarteckning), p1p2p3 (silver)
 // hotot = Kk s1 s2 s3
 
-const colorDict = {
+// A dictionary mapping every color to its gene code
+const COLOR_DICT = {
   /*
   BeB och BeBe är inte samma...
   "Järngrå": ["A", "_", "Be", "_", "C", "_", "D", "_", "G", "_"],
@@ -230,10 +231,10 @@ const colorDict = {
   ["an", "_", "b", "b", "c", "c", "d", "d", "go", "_"],
   ["an", "_", "b", "b", "c", "c", "d", "d", "g", "g"],*/
 
-  //Look over how "_" are handled when retrieving color from geneCodeDict
+  //Look over how "_" are handled when retrieving color from GENE_CODE_DICT
   /*"Vit rödögd": ["a", "a", "_", "_", "_", "_", "_", "_", "_", "_"],*/
 
-  //Flytta till egen dict som inkluderas i geneCodeDict så att de inte finns i listan men presenteras som resultatfärg
+  //Flytta till egen dict som inkluderas i GENE_CODE_DICT så att de inte finns i listan men presenteras som resultatfärg
   //Namnge med dold färg inom parantes
   /*["a", "a", "Be", "_", "C", "_", "D", "_", "G", "_"],
   ["a", "a", "Be", "_", "C", "_", "D", "_", "go", "_"],
@@ -288,22 +289,25 @@ const colorDict = {
   "Vit rödögd (\"dolt\" beige)": ["a", "a", "b", "b", "c", "c", "d", "d", "g", "g"]*/
 }
 
-const colorList = Object.keys(colorDict).sort();
+// A list of all available colors to be shown in the color drop-down
+const COLOR_LIST = Object.keys(COLOR_DICT).sort();
 
-const geneCodeDict = {};
-for (const color in colorDict) {
-  if (colorDict.hasOwnProperty(color)) {
-    const geneCode = colorDict[color];
+// A reversed version of COLOR_DICT, where the gene codes are shortened.
+// E.g. { A,B,C,D,G: "Viltgrå", ... }
+const GENE_CODE_DICT = {};
+for (const color in COLOR_DICT) {
+  if (COLOR_DICT.hasOwnProperty(color)) {
+    const geneCode = COLOR_DICT[color];
     const simplifiedGeneCode = [];
     for (let i = 0; i < geneCode.length; i += 2) {
       simplifiedGeneCode.push(geneCode[i]);
     }
-    geneCodeDict[simplifiedGeneCode] = color;
+    GENE_CODE_DICT[simplifiedGeneCode] = color;
   }
 }
 
 export {
-  colorDict,
-  geneCodeDict,
-  colorList
+  COLOR_DICT,
+  GENE_CODE_DICT,
+  COLOR_LIST
 }
