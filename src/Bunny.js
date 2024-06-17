@@ -1,7 +1,7 @@
 import bunny_silhouette from './rabbit_silhouette.png';
 import { useState, useEffect } from 'react';
 import { GenePairSelect } from './GenePairSelect.js';
-import { defaultGeneSelectValues, lociList } from './constants.js';
+import { defaultGeneSelectValues, locusList } from './constants.js';
 import { colorDict, colorList } from './geneColorDict.js';
 import { getColorFromCode } from './colorCalculator.js';
 
@@ -20,8 +20,8 @@ export function Bunny({ selectedGeneList, setGeneList, selectedColor, setSelecte
           geneCodeSublists.push([geneCodeList[i], geneCodeList[i + 1]]);
         }
         const dict = {};
-        for (let i = 0; i < lociList.length; i += 1) {
-          dict[lociList[i]] = geneCodeSublists[i];
+        for (let i = 0; i < locusList.length; i += 1) {
+          dict[locusList[i]] = geneCodeSublists[i];
         }
         return dict;
       });
@@ -63,7 +63,7 @@ export function Bunny({ selectedGeneList, setGeneList, selectedColor, setSelecte
         </select>
       </div>
 
-      {lociList.map(locus => {
+      {locusList.map(locus => {
         return (
           <GenePairSelect key={crypto.randomUUID()} locus={locus} selectedGeneList={selectedGeneList} handleSelectorChange={handleSelectorChange}/>
         )

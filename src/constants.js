@@ -18,10 +18,10 @@ const dominanceOrder = {
 };
 
 // A list of the available loci
-const lociList = Object.keys(dominanceOrder);
+const locusList = Object.keys(dominanceOrder);
 
 export {
   defaultGeneSelectValues,
   dominanceOrder,
-  lociList
+  locusList
 }
