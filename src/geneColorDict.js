@@ -1,4 +1,5 @@
-// TODO: add KwoKk (vitörad, brokad/mantlad), Xx (vit blåögd/wienertecknad), Yy1y2y3 (rödförstärkning), s1s2s3 (holländarteckning), p1p2p3 (silver)
+// TODO: add KwoKk (vitörad, brokad/mantlad), Xx (vit blåögd/wienertecknad),
+// Yy1y2y3 (rödförstärkning), s1s2s3 (holländarteckning), p1p2p3 (silver)
 // hotot = Kk s1 s2 s3
 
 // A dictionary mapping every color to its gene code
@@ -234,8 +235,9 @@ const COLOR_TO_GENE_DICT = {
   //Look over how "_" are handled when retrieving color from GENE_TO_COLOR_DICT
   /*"Vit rödögd": ["a", "a", "_", "_", "_", "_", "_", "_", "_", "_"],*/
 
-  //Flytta till egen dict som inkluderas i GENE_TO_COLOR_DICT så att de inte finns i listan men presenteras som resultatfärg
-  //Namnge med dold färg inom parantes
+  // Move to their own dictionary to be included in GENE_TO_COLOR_DICT so they aren't present in the
+  // drop-down list but still are presented as result colors.
+  // Add the hidden color in parentesis in the color name
   /*["a", "a", "Be", "_", "C", "_", "D", "_", "G", "_"],
   ["a", "a", "Be", "_", "C", "_", "D", "_", "go", "_"],
   ["a", "a", "Be", "_", "C", "_", "D", "_", "g", "g"],
