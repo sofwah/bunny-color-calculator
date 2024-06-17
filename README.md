@@ -2,7 +2,7 @@
 
 ## Overview
 
-This React project is a simple bunny color calculator that helps determine the potential colors of bunny offspring based on the colors of their parents. It uses genetic principles to predict the color outcomes and provides a visually appealing interface for users to explore various combinations. The gene codes are currently only displayed in the German standard.
+This React project is a simple bunny color calculator that helps determine the potential colors of the bunny offspring based on the colors of their parents. It uses genetic principles to predict the color outcomes and provides a visually appealing interface for users to explore various combinations. The gene codes are currently only displayed in the German standard.
 
 ## Features
 
