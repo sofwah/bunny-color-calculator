@@ -1,4 +1,4 @@
-import bunny_silhouette from './rabbit_silhouette.png';
+import bunny_silhouette from './img/rabbit_silhouette.png';
 import { useState, useEffect } from 'react';
 import { GenePairSelect } from './GenePairSelect.js';
 import { DEFAULT_GENE_SELECT_VALUES, LOCUS_LIST } from './constants.js';
