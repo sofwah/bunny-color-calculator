@@ -1,9 +1,9 @@
-import bunny_silhouette from './img/rabbit_silhouette.png';
+import bunny_silhouette from '../img/rabbit_silhouette.png';
 import { useState, useEffect } from 'react';
 import { GenePairSelect } from './GenePairSelect.js';
-import { DEFAULT_GENE_SELECT_VALUES, LOCUS_LIST } from './constants.js';
-import { COLOR_TO_GENE_DICT, COLOR_LIST } from './geneColorDict.js';
-import { getColorFromCode } from './colorCalculator.js';
+import { DEFAULT_GENE_SELECT_VALUES, LOCUS_LIST } from '../constants/constants.js';
+import { COLOR_TO_GENE_DICT, COLOR_LIST } from '../constants/geneColorDict.js';
+import { getColorFromCode } from '../utils/colorCalculator.js';
 
 export function Bunny({ selectedGeneList, setGeneList, selectedColor, setSelectedColor }) {
   // TODO: Change for useCallback or useMemo? Need selectedColor and

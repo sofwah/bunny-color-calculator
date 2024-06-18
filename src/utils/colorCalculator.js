@@ -1,5 +1,5 @@
-import { DOMINANCE_ORDER } from './constants.js';
-import { GENE_TO_COLOR_DICT } from './geneColorDict.js';
+import { DOMINANCE_ORDER } from '../constants/constants.js';
+import { GENE_TO_COLOR_DICT } from '../constants/geneColorDict.js';
 
 //TODO: replace for-loops with foreach or map
 

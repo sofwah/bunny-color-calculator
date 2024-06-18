@@ -1,8 +1,8 @@
-import './styles.css';
+import '../styles/styles.css';
 import { Bunny } from './Bunny.js';
 import { useState } from 'react';
-import { findPossibleCombinations } from './colorCalculator.js';
-import { DEFAULT_GENE_SELECT_VALUES } from './constants.js';
+import { findPossibleCombinations } from '../utils/colorCalculator.js';
+import { DEFAULT_GENE_SELECT_VALUES } from '../constants/constants.js';
 
 function App() {
   const [geneList1, setGeneList1] = useState(DEFAULT_GENE_SELECT_VALUES);
