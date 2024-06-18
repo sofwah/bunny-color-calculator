@@ -149,13 +149,14 @@ function geneListToString(geneList) {
 }
 
 /**
- * Returns the list of possible colors and their percentage to be displayed in the result.
+ * Creates a dictionary of possible colors and their percentage to be displayed in the result along
+ * with their corresponding gene codes.
  *
  * @param {String[][][]} geneCombinations List of all gene combinations for all possible offspring,
  *                                        [[['A','A'],['B','B'],['C','C'],['D','D'],['G','G']],
  *                                         [['A','A'],['B','B'],['C','C'],['D','D'],['G','_']], ...]
- * @returns {String[]} List of strings with each color or gene combination followed by its
- *                     probability in percentage.
+ * @returns {Object} Object of strings with each color or gene combination followed by its
+ *                     probability in percentage as key and the corresponding gene codes as value.
  */
 function countColorVariations(geneCombinations) {
   const nbrGeneCombinations = geneCombinations.length;
