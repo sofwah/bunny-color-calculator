@@ -158,6 +158,7 @@ function geneListToString(geneList) {
  *                     probability in percentage.
  */
 function countColorVariations(geneCombinations) {
+  const nbrGeneCombinations = geneCombinations.length;
   // Count the occurrence of each color
   const combinationCounts = {}; // { Color/Gene code: *Nbr occurences in geneCombinations* }
   const colorDict = {}; // { Viltgrå: ['A_ B_ C_ D_ G_', 'AA B_ C_ D_ G_', ...] }
@@ -173,18 +174,11 @@ function countColorVariations(geneCombinations) {
     Object.entries(combinationCounts).sort((a, b) => b[1] - a[1])
   );
 
-  // Get total amount of colors to be used when calcualting percentage
-  const counts = Object.values(sortedCombinationCounts);
-  let sum = 0;
-  counts.forEach( num => {
-    sum += num;
-  })
-
   const resultStringDict = {};
 
   for (const color in sortedCombinationCounts) {
     // Adds a line like "Viltgrå 4%"
-    const key = `${color} ${Math.round((sortedCombinationCounts[color] / sum) * 1000) / 10}%`;
+    const key = `${color} ${Math.round((sortedCombinationCounts[color] / nbrGeneCombinations) * 1000) / 10}%`;
     resultStringDict[key] = Array.from(colorDict[color]);
   }
 
