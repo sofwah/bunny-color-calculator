@@ -33,12 +33,12 @@ export function ColorDropdown({ label, content }) {
         className="cursor-pointer flex items-center"
       >
         <ArrowIcon isOpen={isOpen} /> {/* Use the SVG component */}
-        <span className="ml-2 font-medium">{label}</span>
+        <span className="ml-2 font-medium tracking-wide" dangerouslySetInnerHTML={{ __html: label }}></span>
       </div>
       {isOpen && (
-        <div className="pl-5 py-1 pb-1 rounded-b-lg text-sm text-gray-800">
+        <div className="pl-5 py-1 pb-1 rounded-b-lg text-sm text-gray-800 tracking-wide">
           {content.map((item, index) => (
-            <div key={index}>{item}</div>
+            <div key={index} dangerouslySetInnerHTML={{ __html: item }}></div>
           ))}
         </div>
       )}

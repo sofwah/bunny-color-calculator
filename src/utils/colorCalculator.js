@@ -1,4 +1,4 @@
-import { DOMINANCE_ORDER } from '../constants/constants.js';
+import { DOMINANCE_ORDER, HTML_GENE_DICT } from '../constants/constants.js';
 import { GENE_TO_COLOR_DICT } from '../constants/geneColorDict.js';
 
 //TODO: replace for-loops with foreach or map
@@ -87,8 +87,8 @@ function getPairCombinations(geneList1, geneList2) {
  * @param {Object} geneDict Dictionary with all possible pair combinations for each loci,
  *                          {a -> [['A', 'A'], ['A', 'achi'], ...], ...}.
  * @returns {String[][][]} List of all gene combinations for all possible offspring,
- *                         [[["A","A"],["B","B"],["C","C"],["D","D"],["G","G"]],
- *                          [["A","A"],["B","B"],["C","C"],["D","D"],["G","_"]], ...]
+ *                         [[['A','A'],['B','B'],['C','C'],['D','D'],['G','G']],
+ *                          [['A','A'],['B','B'],['C','C'],['D','D'],['G','_']], ...]
  */
 function getCombinations(geneDict) {
   const loci = Object.values(geneDict);
@@ -114,7 +114,7 @@ function getCombinations(geneDict) {
  * Removes the hidden gene in the gene pair in a list of gene pairs
  *
  * @param {String[][]} geneList List of gene pairs, for example
- *                              [["A","_"],["B","_"],["C","_"],["D","_"],["G","_"]]
+ *                              [['A','_'],['B','_'],['C','_'],['D','_'],['G','_']]
  * @returns {String[]} Input param with gene pair list replaced with only the first gene.
  */
 function simplifyGeneList(geneList) {
@@ -126,11 +126,34 @@ function simplifyGeneList(geneList) {
 }
 
 /**
+ * Turns gene lists into properly formatted strings. Can handle both complete lists with gene pairs
+ * and simplified gene lists.
+ *
+ * @param {String[][]} geneList List of gene pairs or simplified gene lists, for example
+ *                              [['A','_'],['B','_'], ...] or ['A', 'B', ...]
+ * @returns {String[]} String version of the list, 'A_ B_ ...'
+ */
+function geneListToString(geneList) {
+  var replacedList = null
+
+  if (Array.isArray(geneList[0])) {
+    replacedList = geneList.map(([first, second]) => [
+      HTML_GENE_DICT[first] || first,
+      HTML_GENE_DICT[second] || second,
+    ]);
+  } else {
+    replacedList = geneList.map(el => HTML_GENE_DICT[el] || el);
+  }
+
+  return replacedList.map(maybePair => Array.isArray(maybePair) ? maybePair.join('') : maybePair ).join('&ensp;')
+}
+
+/**
  * Returns the list of possible colors and their percentage to be displayed in the result.
  *
  * @param {String[][][]} geneCombinations List of all gene combinations for all possible offspring,
- *                                        [[["A","A"],["B","B"],["C","C"],["D","D"],["G","G"]],
- *                                         [["A","A"],["B","B"],["C","C"],["D","D"],["G","_"]], ...]
+ *                                        [[['A','A'],['B','B'],['C','C'],['D','D'],['G','G']],
+ *                                         [['A','A'],['B','B'],['C','C'],['D','D'],['G','_']], ...]
  * @returns {String[]} List of strings with each color or gene combination followed by its
  *                     probability in percentage.
  */
@@ -140,9 +163,9 @@ function countColorVariations(geneCombinations) {
   const colorDict = {}; // { Viltgrå: ['A_ B_ C_ D_ G_', 'AA B_ C_ D_ G_', ...] }
 
   for (const geneList of geneCombinations) {
-    const color = getColorFromCode(geneList) || simplifyGeneList(geneList).join('  ');
+    const color = getColorFromCode(geneList) || geneListToString(simplifyGeneList(geneList));
     combinationCounts[color] = (combinationCounts[color] || 0) + 1;
-    colorDict[color] = (colorDict[color] || new Set()).add(geneList.map(pair => pair.join('')).join('  '));
+    colorDict[color] = (colorDict[color] || new Set()).add(geneListToString(geneList));
   }
 
   // Sort so largest occurence is first
