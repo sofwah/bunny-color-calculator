@@ -32,7 +32,7 @@ export function ColorDropdown({ label, content }) {
         onClick={toggleDropdown}
         className="cursor-pointer flex items-center"
       >
-        <ArrowIcon isOpen={isOpen} /> {/* Use the SVG component */}
+        <ArrowIcon isOpen={isOpen} /> {}
         <span className="ml-2 font-medium tracking-wide" dangerouslySetInnerHTML={{ __html: label }}></span>
       </div>
       {isOpen && (
