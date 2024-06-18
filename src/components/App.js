@@ -1,5 +1,6 @@
 import '../styles/styles.css';
 import { Bunny } from './Bunny.js';
+import { ColorDropdown } from './ColorDropdown.js';
 import { useState } from 'react';
 import { findPossibleCombinations } from '../utils/colorCalculator.js';
 import { DEFAULT_GENE_SELECT_VALUES } from '../constants/constants.js';
@@ -9,14 +10,14 @@ function App() {
   const [geneList2, setGeneList2] = useState(DEFAULT_GENE_SELECT_VALUES);
   const [selectedColor1, setSelectedColor1] = useState("default");
   const [selectedColor2, setSelectedColor2] = useState("default");
-  const [resultList, setResultList] = useState([]);
+  const [resultDict, setResultDict] = useState({});
 
   function resetPage() {
     setGeneList1(() => DEFAULT_GENE_SELECT_VALUES);
     setGeneList2(() => DEFAULT_GENE_SELECT_VALUES);
     setSelectedColor1(() => "default");
     setSelectedColor2(() => "default");
-    setResultList(() => []);
+    setResultDict(() => {});
   }
 
   return (
@@ -50,7 +51,7 @@ function App() {
         <div className="w-full grid grid-cols-1 place-items-end">
           <button
             onClick={() => findPossibleCombinations(
-              geneList1, geneList2, setResultList
+              geneList1, geneList2, setResultDict
             )}
             className="w-fit bg-white hover:bg-gray-100 text-gray-800
             font-semibold py-2 px-4 rounded shadow"
@@ -71,14 +72,12 @@ function App() {
 
       <div className="grid grid-cols-1 place-items-center pb-12">
         {
-          resultList && resultList.length > 0 ?
+          Object.keys(resultDict).length !== 0 ?
             <div className="result-container rounded-lg py-3 px-4 w-[390px] h-fit">
               <ul>
-                {resultList.map(resultStr => {
-                  return (
-                    <li key={crypto.randomUUID()}>{resultStr}</li>
-                  );
-                })}
+                {Object.entries(resultDict).map(([key, value]) => (
+                  <ColorDropdown key={crypto.randomUUID()} label={key} content={value} />
+                ))}
               </ul>
             </div> : null
         }

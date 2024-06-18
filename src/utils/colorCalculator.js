@@ -34,9 +34,9 @@ export function getColorFromCode(geneList) {
 export function findPossibleCombinations(geneList1, geneList2, setResultList) {
   const genePairCombinations = getPairCombinations(geneList1, geneList2);
   const offspringCombinations = getCombinations(genePairCombinations);
-  const colorStringList = countColorVariations(offspringCombinations);
+  const colorStringDict = countColorVariations(offspringCombinations);
 
-  setResultList(colorStringList);
+  setResultList(colorStringDict);
 }
 
 
@@ -136,11 +136,13 @@ function simplifyGeneList(geneList) {
  */
 function countColorVariations(geneCombinations) {
   // Count the occurrence of each color
-  const combinationCounts = {};
+  const combinationCounts = {}; // { Color/Gene code: *Nbr occurences in geneCombinations* }
+  const colorDict = {}; // { Viltgrå: ['A_ B_ C_ D_ G_', 'AA B_ C_ D_ G_', ...] }
 
   for (const geneList of geneCombinations) {
-    const color = getColorFromCode(geneList) || geneList.map(pair => pair.join('')).join(' ') //simplifyGeneList(geneList).join(' ');//
+    const color = getColorFromCode(geneList) || simplifyGeneList(geneList).join('  ');
     combinationCounts[color] = (combinationCounts[color] || 0) + 1;
+    colorDict[color] = (colorDict[color] || new Set()).add(geneList.map(pair => pair.join('')).join('  '));
   }
 
   // Sort so largest occurence is first
@@ -155,16 +157,13 @@ function countColorVariations(geneCombinations) {
     sum += num;
   })
 
-  const resultStringList = [];
+  const resultStringDict = {};
 
-  for (const key in sortedCombinationCounts) {
+  for (const color in sortedCombinationCounts) {
     // Adds a line like "Viltgrå 4%"
-    resultStringList.push(
-      `${GENE_TO_COLOR_DICT[key] || key} ${
-        Math.round((sortedCombinationCounts[key] / sum) * 1000) / 10
-      }%`
-    );
+    const key = `${color} ${Math.round((sortedCombinationCounts[color] / sum) * 1000) / 10}%`;
+    resultStringDict[key] = Array.from(colorDict[color]);
   }
 
-  return resultStringList;
+  return resultStringDict;
 }
