@@ -2,7 +2,10 @@ import { useState } from 'react';
 
 const ArrowIcon = ({ isOpen }) => (
   <svg
-    className={`w-2.5 h-2.5 text-gray-700 inline-block align-middle transition-transform transform ${isOpen ? 'rotate-90' : ''}`}
+    className={
+      `w-2.5 h-2.5 text-gray-700 inline-block align-middle transition-transform transform
+      ${isOpen ? 'rotate-90' : ''}`
+    }
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
@@ -33,7 +36,9 @@ export function ColorDropdown({ label, content }) {
         className="cursor-pointer flex items-center"
       >
         <ArrowIcon isOpen={isOpen} /> {}
-        <span className="ml-2 font-medium tracking-wide" dangerouslySetInnerHTML={{ __html: label }}></span>
+        <span
+          className="ml-2 font-medium tracking-wide" dangerouslySetInnerHTML={{ __html: label }}
+        ></span>
       </div>
       {isOpen && (
         <div className="pl-5 py-1 pb-1 rounded-b-lg text-sm text-gray-800 tracking-wide">
