@@ -73,7 +73,7 @@ function App() {
       <div className="grid grid-cols-1 place-items-center pb-12">
         {
           resultDict && Object.keys(resultDict).length !== 0 ?
-            <div className="result-container rounded-lg py-3 px-4 w-[390px] h-fit">
+            <div className="result-container rounded-lg py-3 px-4 w-[400px] h-fit">
               <ul>
                 {Object.entries(resultDict).map(([key, value]) => (
                   <ColorDropdown key={crypto.randomUUID()} label={key} content={value} />
