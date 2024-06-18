@@ -28,7 +28,8 @@ export function getColorFromCode(geneList) {
  *                           gene pair as value, {a -> ['A', 'a'], ...}.
  * @param {Function} setResultList Function to set the value of the resultList state.
  * @returns {String[]} List of strings where each element is a color if available (otherwise gene
- *                     code) and it's probability, ordered with the highest probability first.
+ *                     code) and it's probability (e.g. "Viltgrå 7%""), ordered with the highest
+ *                     probability first.
  */
 export function findPossibleCombinations(geneList1, geneList2, setResultList) {
   const genePairCombinations = getPairCombinations(geneList1, geneList2);
