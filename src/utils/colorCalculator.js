@@ -160,26 +160,35 @@ function geneListToString(geneList) {
  */
 function countColorVariations(geneCombinations) {
   const nbrGeneCombinations = geneCombinations.length;
-  // Count the occurrence of each color
-  const combinationCounts = {}; // { Color/Gene code: *Nbr occurences in geneCombinations* }
+  const unknownColorStr = '<i>Okända genkoder</i>';
+  const combinationCounts = {}; // { Viltgrå: 16 }
   const colorDict = {}; // { Viltgrå: ['A_ B_ C_ D_ G_', 'AA B_ C_ D_ G_', ...] }
 
   for (const geneList of geneCombinations) {
-    const color = getColorFromCode(geneList) || geneListToString(simplifyGeneList(geneList));
+    // Retrieves color from gene code if available, otherwise put in unlabeled category
+    const color = getColorFromCode(geneList) || unknownColorStr;
+    // Counts the occurence of each color
     combinationCounts[color] = (combinationCounts[color] || 0) + 1;
+    // Saves the gene code to the color
     colorDict[color] = (colorDict[color] || new Set()).add(geneListToString(geneList));
   }
 
   // Sort so largest occurence is first
-  const sortedCombinationCounts = Object.fromEntries(
-    Object.entries(combinationCounts).sort((a, b) => b[1] - a[1])
-  );
+  const sortedCombinationList = Object.entries(combinationCounts)
+    .sort((a, b) => {
+      // Category for unknown colors should come after all other
+      if (a[0] === unknownColorStr) return 1;
+      if (b[0] === unknownColorStr) return -1;
+      // Otherwise do normal comparison based on occurence
+      return b[1] - a[1];
+    }).map(([key, _]) => key);
 
   const resultStringDict = {};
 
-  for (const color in sortedCombinationCounts) {
-    // Adds a line like "Viltgrå 4%"
-    const key = `${color} ${Math.round((sortedCombinationCounts[color] / nbrGeneCombinations) * 1000) / 10}%`;
+  for (const color of sortedCombinationList) {
+    // Key is like "Viltgrå 4%"
+    const key =
+      `${color} ${Math.round((combinationCounts[color] / nbrGeneCombinations) * 1000) / 10}%`;
     resultStringDict[key] = Array.from(colorDict[color]);
   }
 
