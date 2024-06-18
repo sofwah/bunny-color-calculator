@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 .cont {
-  background-color: #dee6eb;
+  /*background-color: #dee6eb;*/
+  background-color: #D9DBE1;
   min-height: 100vh;
 }
 
@@ -21,5 +22,5 @@
 }
 
 .copyright-text {
-  color: #91a1ac;
+  color: #919eac;
 }
