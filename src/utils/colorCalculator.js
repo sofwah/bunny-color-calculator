@@ -11,7 +11,7 @@ import { GENE_TO_COLOR_DICT } from '../constants/geneColorDict.js';
  * @returns {String} Color corresponding to gene code if available, otherwise default.
  */
 
-function getColorFromCode(geneList) {
+export function getColorFromCode(geneList) {
   const simplifiedGeneList = [];
   for (const genePair of Object.values(geneList)) {
     simplifiedGeneList.push(genePair[0])
@@ -30,7 +30,7 @@ function getColorFromCode(geneList) {
  * @returns {String[]} List of strings where each element is a color if available (otherwise gene
  *                     code) and it's probability, ordered with the highest probability first.
  */
-function findPossibleCombinations(geneList1, geneList2, setResultList) {
+export function findPossibleCombinations(geneList1, geneList2, setResultList) {
   const genePairCombinations = getPairCombinations(geneList1, geneList2);
   const offspringCombinations = getCombinations(genePairCombinations);
   const simplifiedCombinations = simplifyCombinations(offspringCombinations);
@@ -38,6 +38,9 @@ function findPossibleCombinations(geneList1, geneList2, setResultList) {
 
   setResultList(colorStrings);
 }
+
+
+// ## Helper functions ##
 
 /**
  * A dictionary with all possible pair combination for each loci
@@ -170,5 +173,3 @@ function countColorVariations(geneCombinations) {
 
   return resultStrings;
 }
-
-export { findPossibleCombinations, getColorFromCode };
