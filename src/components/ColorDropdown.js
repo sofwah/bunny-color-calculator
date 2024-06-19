@@ -41,7 +41,10 @@ export function ColorDropdown({ label, content }) {
         ></span>
       </div>
       {isOpen && (
-        <div className="pl-5 py-1 pb-2 text-sm text-gray-900 tracking-wide bg-[rgba(0,0,0,0.01)]">
+        <div
+          className="pl-5 py-1 pb-2 text-sm text-gray-900 tracking-wide rounded-t-sm
+          bg-[rgba(0,0,0,0.01)]"
+        >
           {content.map((item, index) => (
             <div key={index} dangerouslySetInnerHTML={{ __html: item }}></div>
           ))}
