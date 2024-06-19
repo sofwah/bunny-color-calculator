@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { findPossibleCombinations } from '../utils/colorCalculator.js';
 import { DEFAULT_GENE_SELECT_VALUES } from '../constants/constants.js';
 import { InfoSymbol } from './InfoSymbol.js';
+import { InfoPopup } from './InfoPopup.js';
 
 function App() {
   const [geneList1, setGeneList1] = useState(DEFAULT_GENE_SELECT_VALUES);
@@ -12,6 +13,7 @@ function App() {
   const [selectedColor1, setSelectedColor1] = useState("default");
   const [selectedColor2, setSelectedColor2] = useState("default");
   const [resultDict, setResultDict] = useState({});
+  const [infoIsOpen, setInfoIsOpen] = useState(false);
 
   function resetPage() {
     setGeneList1(() => DEFAULT_GENE_SELECT_VALUES);
@@ -23,7 +25,7 @@ function App() {
 
   return (
     <div className="cont relative">
-      <InfoSymbol/>
+      <InfoSymbol setInfoIsOpen={setInfoIsOpen}/>
       <div className="grid grid-cols-1 py-8">
         <p className="font-semibold text-3xl text-center max-w-[90%] mx-auto">
           Välj färg eller fyll i genkoderna för föräldrarna
@@ -90,6 +92,9 @@ function App() {
           © Sofia Wahlmark 2024. All rights reserved.
         </p>
       </div>
+
+      { infoIsOpen ? <InfoPopup setInfoIsOpen={setInfoIsOpen}/> : null }
+
     </div>
   );
 }
