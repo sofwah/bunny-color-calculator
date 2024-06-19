@@ -50,7 +50,7 @@ export function Bunny({ selectedGeneList, setGeneList, selectedColor, setSelecte
   }
 
   return (
-    <div className="max-w-fit h-fit mx-3">
+    <div className="max-w-fit h-fit p-3 mx-3 my-2 md:my-0 rounded-lg shadow-sm bunny-container">
       <div className="grid grid-cols-1 place-items-center">
         <img src={bunny_silhouette} className="w-[200px]" alt="Bunny silhouette"/>
       </div>
