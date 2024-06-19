@@ -30,10 +30,10 @@ export function ColorDropdown({ label, content }) {
   };
 
   return (
-    <div className="my-2">
+    <div className="my-1">
       <div
         onClick={toggleDropdown}
-        className="cursor-pointer flex items-center"
+        className="cursor-pointer flex items-center py-1 shadow-[inset_0_-8px_1px_-8px_rgba(0,0,0,0.2)]"
       >
         <ArrowIcon isOpen={isOpen} /> {}
         <span
@@ -41,7 +41,7 @@ export function ColorDropdown({ label, content }) {
         ></span>
       </div>
       {isOpen && (
-        <div className="pl-5 py-1 pb-1 rounded-b-lg text-sm text-gray-800 tracking-wide">
+        <div className="pl-5 py-1 pb-2 text-sm text-gray-800 tracking-wide bg-[rgba(0,0,0,0.02)]">
           {content.map((item, index) => (
             <div key={index} dangerouslySetInnerHTML={{ __html: item }}></div>
           ))}
