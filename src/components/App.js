@@ -4,6 +4,7 @@ import { ColorDropdown } from './ColorDropdown.js';
 import { useState } from 'react';
 import { findPossibleCombinations } from '../utils/colorCalculator.js';
 import { DEFAULT_GENE_SELECT_VALUES } from '../constants/constants.js';
+import { InfoSymbol } from './InfoSymbol.js';
 
 function App() {
   const [geneList1, setGeneList1] = useState(DEFAULT_GENE_SELECT_VALUES);
@@ -22,8 +23,9 @@ function App() {
 
   return (
     <div className="cont relative">
+      <InfoSymbol/>
       <div className="grid grid-cols-1 py-8">
-        <p className="font-semibold text-3xl text-center">
+        <p className="font-semibold text-3xl text-center max-w-[90%] mx-auto">
           Välj färg eller fyll i genkoderna för föräldrarna
         </p>
       </div>
