@@ -20,19 +20,19 @@ export function InfoPopup({ setInfoIsOpen }) {
     >
       <div
         onClick={handleInnerClick}
-        className='bg-gray-100 rounded-lg shadow-lg w-[80vw] md:w-[70vw] lg:w-[60vw]
-        h-[85%] fixed top-16'
+        className='fixed bg-gray-100 rounded-lg shadow-lg w-[80vw] md:w-[70vw] lg:w-[60vw]
+        h-[85%] top-16 flex flex-col'
       >
         <div
-          className='absolute right-4 top-2 text-2xl text-gray-800 hover:text-gray-500
+          className='flex items-end justify-between text-2xl text-gray-800 hover:text-gray-500
           cursor-pointer'
         >
-          <div onClick={closeInfoPopup}>
+          <div className='ml-auto mr-3 my-1' onClick={closeInfoPopup}>
             &#10005;
           </div>
         </div>
 
-        <div className='px-12 pt-14 pb-10 h-full w-full overflow-y-scroll'>
+        <div className='px-12 pt-5 h-[90%] sm:h-[92%] w-full overflow-y-auto'>
 
           <p className='mb-3 text-base sm:text-lg'>
             Denna sida är ett gratis verktyg för att ta reda på möjliga färger på avkommor mellan
