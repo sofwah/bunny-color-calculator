@@ -24,10 +24,12 @@ export function InfoPopup({ setInfoIsOpen }) {
         max-h-[85%] top-16 flex flex-col'
       >
         <div
-          className='flex items-end justify-between text-2xl text-gray-800 hover:text-gray-500
-          cursor-pointer'
+          className='flex items-end justify-between text-2xl'
         >
-          <div className='ml-auto mr-3 my-1' onClick={closeInfoPopup}>
+          <div
+            onClick={closeInfoPopup}
+            className='ml-auto mr-3 my-1 cursor-pointer text-gray-800 hover:text-gray-500'
+          >
             &#10005;
           </div>
         </div>
