@@ -36,23 +36,23 @@ export function InfoPopup({ setInfoIsOpen }) {
 
         <div className='px-12 pb-8 pt-1 mb-1 mt-5 w-full overflow-y-auto'>
 
-          <p className='mb-3 text-base sm:text-lg'>
+          <p className='mb-7 text-base sm:text-lg'>
             Denna sida är ett gratis verktyg för att ta reda på möjliga färger på avkommor mellan
             kaniner. Förhoppningen är att detta ska kunna användas som ett hjälpmedel, både för
             erfarna och mindre erfarna uppfödare, när man själv inte kan eller orkar räkna ut vilka
             färger som kan uppstå i en kull.
           </p>
 
-          <p className='mb-7 text-base sm:text-lg'>
+          {/*<p className='mb-7 text-base sm:text-lg'>
             Det främsta målet har varit att hålla sidan simpel till en början för att den ska vara
             lätt att använda, men fler funktioner kan komma att läggas till längre fram.
-          </p>
+          </p>*/}
 
 
           <InfoDropdown
             headingHtml={<p className='text-lg font-medium'>Bra att veta</p>}
             contentHtml={
-              <div className='my-2'>
+              <div className='mt-2 mb-4'>
                 <p className='mb-3'>
                   Tänk på att resultatet inte är garanterat att vara
                   korrekt om de fulla genkoderna inte har fyllts i. Detta beror på att programmet i
@@ -76,17 +76,17 @@ export function InfoPopup({ setInfoIsOpen }) {
           <InfoDropdown
             headingHtml={<p className='text-lg font-medium'>"Okända genkoder"</p>}
             contentHtml={
-              <div className='my-2'>
-                <p className='mb-3'>
+              <div className='mt-2 mb-4'>
+                <p>
                   Under "Okända genkoder" samlas alla genkoder som inte kan kopplas till en färg i
                   databasen. Oftast beror detta på för många okända gener i genkoden, men i vissa
                   fall är det för att den aktuella färgen inte har lagts till ännu.
                 </p>
 
-                <p>
+                {/*<p>
                   Detta gäller främst mer komplexa färger som jag inte med säkerhet har kunnat
                   namnge. Dessa kommer dock också läggas till inom kort.
-                </p>
+                </p>*/}
               </div>
             }
           />
@@ -94,7 +94,7 @@ export function InfoPopup({ setInfoIsOpen }) {
           <InfoDropdown
             headingHtml={<p className='text-lg font-medium'>Grundläggande genetik</p>}
             contentHtml={
-              <div className='my-2'>
+              <div className='mt-2'>
                 <p className='mb-3'>
                   Algoritmerna som programmet använder sig av är baserade på grundläggande genetiska
                   principer. Kaninfärger beskrivs genetiskt med bokstavskoder, huvudsakligen A, B,
