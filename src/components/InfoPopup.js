@@ -34,7 +34,7 @@ export function InfoPopup({ setInfoIsOpen }) {
           </div>
         </div>
 
-        <div className='px-12 pt-5 pb-10 h-[90%] sm:h-[92%] w-full overflow-y-auto'>
+        <div className='px-12 pb-8 pt-1 mb-1 mt-5 w-full overflow-y-auto'>
 
           <p className='mb-3 text-base sm:text-lg'>
             Denna sida är ett gratis verktyg för att ta reda på möjliga färger på avkommor mellan
