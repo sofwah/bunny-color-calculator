@@ -9,7 +9,7 @@ export function InfoPopup({ setInfoIsOpen }) {
   };
 
   function handleInnerClick(e) {
-    // Prevent the click event from bubbling up to the outer div
+    // Prevent the click event from bubbling up to outer divs and trigger their click events.
     e.stopPropagation();
   };
 
@@ -24,7 +24,8 @@ export function InfoPopup({ setInfoIsOpen }) {
         h-[85%] fixed top-16'
       >
         <div
-          className='absolute right-4 top-2 text-2xl text-gray-800 hover:text-gray-500 cursor-pointer'
+          className='absolute right-4 top-2 text-2xl text-gray-800 hover:text-gray-500
+          cursor-pointer'
         >
           <div onClick={closeInfoPopup}>
             &#10005;
@@ -33,51 +34,88 @@ export function InfoPopup({ setInfoIsOpen }) {
 
         <div className='px-12 pt-14 pb-10 h-full w-full overflow-y-scroll'>
 
+          <p className='mb-3 text-base sm:text-lg'>
+            Denna sida är ett gratis verktyg för att ta reda på möjliga färger på avkommor mellan
+            kaniner. Förhoppningen är att detta ska kunna användas som ett hjälpmedel både för
+            erfarna och mindre erfarna uppfödare när man själv inte kan eller orkar räkna ut vilka
+            färger som kan uppstå i en kull.
+          </p>
+
           <p className='mb-5 text-base sm:text-lg'>
-            Denna sida är ett verktyg för att ta reda på möjliga färger på avkommor mellan kaniner.
-            Förhoppningen är att detta ska kunna användas som ett hjälpmedel både för erfarna och
-            mindre erfarna uppfödare när man själv inte kan eller orkar räkna ut vilka färger som
-            kan uppstå i en kull.
+            Det främsta målet har varit att hålla sidan simpel till en början för att den ska vara
+            lätt att använda, men fler funktioner kan komma att läggas till längre fram.
           </p>
 
-          <p className='mb-3'>
-            <span className='font-medium'>Tänk på</span> att resultatet inte är garanterat att vara
-            korrekt om de fulla genkoderna inte har fyllts i. Detta beror på att programmet i
-            beräkningarna antar att okända gener, symboliserade med "_", är minst dominanta och kan
-            döljas av alla andra gentyper.
-          </p>
 
-          <p className='mb-5'>
-            Till exempel, om en möjlig genkombination för avkommor är
-            <span className='font-medium whitespace-nowrap'> A_ B_ C_ d_ gg</span> kommer den antas
-            vara blå, även om "<span className='font-medium '>_</span>" på D-locus riskerar att
-            egentligen vara <span className='font-medium'> D</span>, vilket istället skulle resultera
-            i svart. För att minimera risken för felaktiga beräkningar är det därför rekommenderat
-            att fylla i genkoderna i så stor utsträckning som möjligt!
-          </p>
+          <InfoDropdown
+            headingHtml={<p className='text-lg font-medium'>Viktigt</p>}
+            contentHtml={
+              <div className='my-2'>
+                <p className='mb-3'>
+                  Tänk på att resultatet inte är garanterat att vara
+                  korrekt om de fulla genkoderna inte har fyllts i. Detta beror på att programmet i
+                  beräkningarna antar att okända gener, symboliserade med "_", är minst dominanta
+                  och kan döljas av alla andra gentyper.
+                </p>
+
+                <p>
+                  Till exempel, om en möjlig genkombination för avkommor är
+                  <span className='font-medium whitespace-nowrap'> A_ B_ C_ d_ gg</span> kommer den
+                  antas vara blå, även om "<span className='font-medium '>_</span>" på D-locus
+                  riskerar att egentligen vara <span className='font-medium'> D</span>, vilket
+                  istället skulle resultera i svart. För att minimera risken för felaktiga
+                  beräkningar är det därför rekommenderat att fylla i genkoderna i så stor
+                  utsträckning som möjligt!
+                </p>
+              </div>
+            }
+          />
+
+          <InfoDropdown
+            headingHtml={<p className='text-lg font-medium'>"Okända genkoder"</p>}
+            contentHtml={
+              <div className='my-2'>
+                <p className='mb-3'>
+                  Under "Okända genkoder" samlas alla genkoder som inte kan kopplas till en färg i
+                  databasen. Oftast beror detta på för många okända gener i genkoden, men i vissa
+                  fall är det för att den aktuella färgen inte har lagts till ännu.
+                </p>
+
+                <p>
+                  Detta gäller främst mer komplexa färger som jag inte med säkerhet har kunnat
+                  namnge. Dessa kommer dock också läggas till inom kort.
+                </p>
+              </div>
+            }
+          />
 
           <InfoDropdown
             headingHtml={<p className='text-lg font-medium'>Grundläggande genetik</p>}
             contentHtml={
-              <div>
-                <p>
-                  Kaninfärger beskrivs genetiskt med bokstavskoder, huvudsakligen A, B, C, D och G.
-                  Varje gen påverkar kaninens färg på olika sätt, A avgör till exempel graden av
-                  pigmentering och B kontrollerar gula pigment. Det är genom blandingar av olika
-                  variationer av dessa som alla olika pälsfärger uppstår.
+              <div className='my-2'>
+                <p className='mb-3'>
+                  Algoritmerna som programmet använder sig av är baserade på grundläggande genetiska
+                  principer. Kaninfärger beskrivs genetiskt med bokstavskoder, huvudsakligen A, B,
+                  C, D och G. Varje gen påverkar kaninens färg på olika sätt, A avgör till exempel
+                  graden av pigmentering och B kontrollerar gula pigment. Det är genom blandingar
+                  av olika variationer av dessa som alla olika pälsfärger kan uppstå.
                 </p>
 
                 <div class='flex justify-center items-center py-5'>
-                  <img src={gene_code_description} className="w-[90%] sm:w-[60%]" alt="Description of gene types"/>
+                  <img
+                    src={gene_code_description}
+                    className="w-[90%] sm:w-[60%]"
+                    alt="Description of gene types"
+                  />
                 </div>
 
-                <p>
+                <p className='mb-3'>
                   För varje färg har kaniner två gener, och genkoder skriv därför med par av dessa
-                  bokstäver. Vissa gener är mer dominanta än andra och kan därför dölja mindre dominanta
-                  gener.
+                  bokstäver. Vissa gener är mer dominanta än andra och kan därför dölja mindre
+                  dominanta gener.
                 </p>
 
-                <p className='mb-1 mt-3'>
+                <p className='mb-1'>
                   Dominansordningen för respektive locus är som följande:
                 </p>
 
@@ -91,28 +129,31 @@ export function InfoPopup({ setInfoIsOpen }) {
                   b<sup>j</sup> (japanteckning), b (gul).
                 </p>
                 <p>
-                  &#8226; <span className='font-medium'>C-locus</span>: C (full pigmentering), c (brun).
+                  &#8226; <span className='font-medium'>C-locus</span>: C (full pigmentering),
+                  c (brun).
                 </p>
                 <p>
-                  &#8226; <span className='font-medium'>D-locus</span>: D (full pigmentering), d (blå).
+                  &#8226; <span className='font-medium'>D-locus</span>: D (full pigmentering),
+                  d (blå).
                 </p>
                 <p>
                   &#8226; <span className='font-medium'>G-locus</span>: G (Viltfärgad),
                   g<sup>o</sup> (otter), g (helfärgad)
                 </p>
 
-                <p className='mb-1 mt-3'>
+                <p className='mb-3 mt-3'>
                   Till exempel, en kanin med genkoden
-                  <span className='font-medium whitespace-nowrap text-[#004D9C]'> AA BB CC <u>dd</u> gg</span>
+                  <span className='font-medium whitespace-nowrap text-[#004D9C]'> AA BB CC <u>dd</u> gg </span>
                   är blå, medan en kanin med genkoden
                   <span className='font-medium whitespace-nowrap text-[#B84981]'> AA BB CC <u>Dd</u> gg </span>
-                  är svart. Den andra kaninen <i>bär</i> dock på blått och kan få ungar som är blå om den
-                  andra föräldern också har ett <span className='font-medium'>d</span> på sitt D-locus.
+                  är svart. Den andra kaninen <i>bär</i> dock på blått och kan få ungar som är blå
+                  om den andra föräldern också har ett <span className='font-medium'>d</span> på
+                  sitt D-locus.
                 </p>
 
-                <p className='mb-1 mt-3'>
-                  Om dessa två kaniner skulle få ungar skulle sannolikhetsdistributionen av genkoder på
-                  D-locus se ut såhär:
+                <p className='mb-1'>
+                  Om dessa två kaniner skulle få ungar skulle sannolikhetsdistributionen av genkoder
+                  på D-locus se ut såhär:
                 </p>
 
                 <div class='flex justify-center items-center py-5'>
