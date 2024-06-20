@@ -36,8 +36,8 @@ export function InfoPopup({ setInfoIsOpen }) {
 
           <p className='mb-3 text-base sm:text-lg'>
             Denna sida är ett gratis verktyg för att ta reda på möjliga färger på avkommor mellan
-            kaniner. Förhoppningen är att detta ska kunna användas som ett hjälpmedel både för
-            erfarna och mindre erfarna uppfödare när man själv inte kan eller orkar räkna ut vilka
+            kaniner. Förhoppningen är att detta ska kunna användas som ett hjälpmedel, både för
+            erfarna och mindre erfarna uppfödare, när man själv inte kan eller orkar räkna ut vilka
             färger som kan uppstå i en kull.
           </p>
 
