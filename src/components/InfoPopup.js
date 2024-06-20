@@ -21,7 +21,7 @@ export function InfoPopup({ setInfoIsOpen }) {
       <div
         onClick={handleInnerClick}
         className='fixed bg-gray-100 rounded-lg shadow-lg w-[80vw] md:w-[70vw] lg:w-[60vw]
-        h-[85%] top-16 flex flex-col'
+        max-h-[85%] top-16 flex flex-col'
       >
         <div
           className='flex items-end justify-between text-2xl text-gray-800 hover:text-gray-500
@@ -32,7 +32,7 @@ export function InfoPopup({ setInfoIsOpen }) {
           </div>
         </div>
 
-        <div className='px-12 pt-5 h-[90%] sm:h-[92%] w-full overflow-y-auto'>
+        <div className='px-12 pt-5 pb-10 h-[90%] sm:h-[92%] w-full overflow-y-auto'>
 
           <p className='mb-3 text-base sm:text-lg'>
             Denna sida är ett gratis verktyg för att ta reda på möjliga färger på avkommor mellan
@@ -41,7 +41,7 @@ export function InfoPopup({ setInfoIsOpen }) {
             färger som kan uppstå i en kull.
           </p>
 
-          <p className='mb-5 text-base sm:text-lg'>
+          <p className='mb-7 text-base sm:text-lg'>
             Det främsta målet har varit att hålla sidan simpel till en början för att den ska vara
             lätt att använda, men fler funktioner kan komma att läggas till längre fram.
           </p>
