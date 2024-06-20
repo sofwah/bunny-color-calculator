@@ -3,7 +3,7 @@ import { useState } from 'react';
 const ArrowIcon = ({ isOpen }) => (
   <svg
     className={
-      `w-2.5 h-2.5 text-gray-700 inline-block align-middle transition-transform transform
+      `w-3 h-3 text-gray-700 inline-block align-middle transition-transform transform
       ${isOpen ? 'rotate-90' : ''}`
     }
     xmlns="http://www.w3.org/2000/svg"
@@ -16,13 +16,13 @@ const ArrowIcon = ({ isOpen }) => (
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
-      strokeWidth="2"
+      strokeWidth="3"
       d="M9 5l7 7-7 7"
     />
   </svg>
 );
 
-export function ColorDropdown({ label, content }) {
+export function InfoDropdown({ headingHtml, contentHtml }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -35,19 +35,16 @@ export function ColorDropdown({ label, content }) {
         onClick={toggleDropdown}
         className="cursor-pointer flex items-center py-1"
       >
-        <ArrowIcon isOpen={isOpen} />
-        <p
-          className="ml-2 font-medium tracking-wide" dangerouslySetInnerHTML={{ __html: label }}
-        ></p>
+        <div className='mr-2 mb-[2px]'>
+          <ArrowIcon isOpen={isOpen} />
+        </div>
+        {headingHtml}
       </div>
       {isOpen && (
         <div
-          className="pl-5 py-2 pb-2 text-sm text-gray-900 tracking-wide rounded-t-sm
-          shadow-[inset_0_8px_1px_-8px_rgba(0,0,0,0.3)]"
+          className="pl-5 py-2 pb-2 tracking-wide shadow-[inset_0_8px_1px_-8px_rgba(0,0,0,0.3)]"
         >
-          {content.map((item, index) => (
-            <div key={index} dangerouslySetInnerHTML={{ __html: item }}></div>
-          ))}
+          {contentHtml}
         </div>
       )}
     </div>
