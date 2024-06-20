@@ -48,7 +48,7 @@ export function InfoPopup({ setInfoIsOpen }) {
 
 
           <InfoDropdown
-            headingHtml={<p className='text-lg font-medium'>Viktigt</p>}
+            headingHtml={<p className='text-lg font-medium'>Bra att veta</p>}
             contentHtml={
               <div className='my-2'>
                 <p className='mb-3'>
