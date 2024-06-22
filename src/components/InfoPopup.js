@@ -20,7 +20,7 @@ export function InfoPopup({ setInfoIsOpen }) {
     >
       <div
         onClick={handleInnerClick}
-        className='fixed bg-gray-100 rounded-lg shadow-lg w-[80vw] md:w-[70vw] lg:w-[60vw]
+        className='fixed bg-gray-100 rounded-lg shadow-lg w-[90vw] sm:w-[80vw] md:w-[70vw] lg:w-[60vw]
         max-h-[85%] top-16 flex flex-col'
       >
         <div
