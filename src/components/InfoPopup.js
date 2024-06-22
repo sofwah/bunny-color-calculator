@@ -111,25 +111,34 @@ export function InfoPopup({ setInfoIsOpen }) {
                 </p>
 
                 <p>
-                  &#8226; <span className='font-medium'>A-locus</span>: A (full pigmentering),
-                  a<sup>chi</sup> (chinchilla), a<sup>m</sup> (zobel/siames), a<sup>n</sup> (ryss),
-                  a (vit rödögd).
+                  &#8226; <span className='font-medium'>A-locus</span>:
+                  A&nbsp;(full&nbsp;pigmentering),
+                  a<sup>chi</sup>&nbsp;(chinchilla),
+                  a<sup>m</sup>&nbsp;(zobel/siames),
+                  a<sup>n</sup>&nbsp;(ryss),
+                  a&nbsp;(vit&nbsp;rödögd).
                 </p>
                 <p>
-                  &#8226; <span className='font-medium'>B-locus</span>: B (full pigmentering),
-                  b<sup>j</sup> (japanteckning), b (gul).
+                  &#8226; <span className='font-medium'>B-locus</span>:
+                  B&nbsp;(full&nbsp;pigmentering),
+                  b<sup>j</sup>&nbsp;(japanteckning),
+                  b&nbsp;(gul).
                 </p>
                 <p>
-                  &#8226; <span className='font-medium'>C-locus</span>: C (full pigmentering),
-                  c (brun).
+                  &#8226; <span className='font-medium'>C-locus</span>:
+                  C&nbsp;(full&nbsp;pigmentering),
+                  c&nbsp;(brun).
                 </p>
                 <p>
-                  &#8226; <span className='font-medium'>D-locus</span>: D (full pigmentering),
-                  d (blå).
+                  &#8226; <span className='font-medium'>D-locus</span>:
+                  D&nbsp;(full&nbsp;pigmentering),
+                  d&nbsp;(blå).
                 </p>
                 <p>
-                  &#8226; <span className='font-medium'>G-locus</span>: G (Viltfärgad),
-                  g<sup>o</sup> (otter), g (helfärgad)
+                  &#8226; <span className='font-medium'>G-locus</span>:
+                  G&nbsp;(Viltfärgad),
+                  g<sup>o</sup>&nbsp;(otter),
+                  g&nbsp;(helfärgad)
                 </p>
 
                 <p className='mb-3 mt-3'>
