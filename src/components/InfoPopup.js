@@ -34,7 +34,7 @@ export function InfoPopup({ setInfoIsOpen }) {
           </div>
         </div>
 
-        <div className='px-12 pb-8 pt-1 mb-1 mt-5 w-full overflow-y-auto'>
+        <div className='px-8 sm:px-10 pb-8 pt-1 mb-2 mt-3 sm:mt-5 w-full overflow-y-auto'>
 
           <p className='mb-7 text-base sm:text-lg'>
             Denna sida är ett gratis verktyg för att ta reda på möjliga färger på avkommor mellan
@@ -103,7 +103,7 @@ export function InfoPopup({ setInfoIsOpen }) {
                   av olika variationer av dessa som alla olika pälsfärger kan uppstå.
                 </p>
 
-                <div class='flex justify-center items-center py-5'>
+                <div className='flex justify-center items-center py-5'>
                   <img
                     src={gene_code_description}
                     className="w-[90%] sm:w-[60%]"
@@ -158,7 +158,7 @@ export function InfoPopup({ setInfoIsOpen }) {
                   på D-locus se ut såhär:
                 </p>
 
-                <div class='flex justify-center items-center py-5'>
+                <div className='flex justify-center items-center py-5'>
                   <img src={gene_calc} className="w-[90%] sm:w-[60%]" alt="Calculation of "/>
                 </div>
               </div>
