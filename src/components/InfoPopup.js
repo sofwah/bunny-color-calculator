@@ -43,12 +43,6 @@ export function InfoPopup({ setInfoIsOpen }) {
             färger som kan uppstå i en kull.
           </p>
 
-          {/*<p className='mb-7 text-base sm:text-lg'>
-            Det främsta målet har varit att hålla sidan simpel till en början för att den ska vara
-            lätt att använda, men fler funktioner kan komma att läggas till längre fram.
-          </p>*/}
-
-
           <InfoDropdown
             headingHtml={<p className='text-lg font-medium'>Bra att veta</p>}
             contentHtml={
@@ -82,11 +76,6 @@ export function InfoPopup({ setInfoIsOpen }) {
                   databasen. Oftast beror detta på för många okända gener i genkoden, men i vissa
                   fall är det för att den aktuella färgen inte har lagts till ännu.
                 </p>
-
-                {/*<p>
-                  Detta gäller främst mer komplexa färger som jag inte med säkerhet har kunnat
-                  namnge. Dessa kommer dock också läggas till inom kort.
-                </p>*/}
               </div>
             }
           />
