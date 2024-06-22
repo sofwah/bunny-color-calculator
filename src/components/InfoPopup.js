@@ -36,7 +36,7 @@ export function InfoPopup({ setInfoIsOpen }) {
 
         <div className='px-8 sm:px-10 pb-8 pt-1 mb-2 mt-3 sm:mt-5 w-full overflow-y-auto'>
 
-          <p className='mb-7 text-base sm:text-lg'>
+          <p className='mb-7 text-lg'>
             Denna sida är ett gratis verktyg för att ta reda på möjliga färger på avkommor mellan
             kaniner. Förhoppningen är att detta ska kunna användas som ett hjälpmedel, både för
             erfarna och mindre erfarna uppfödare, när man själv inte kan eller orkar räkna ut vilka
