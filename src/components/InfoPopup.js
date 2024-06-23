@@ -20,37 +20,33 @@ export function InfoPopup({ setInfoIsOpen }) {
     >
       <div
         onClick={handleInnerClick}
-        className='fixed bg-gray-100 rounded-lg shadow-lg w-[80vw] md:w-[70vw] lg:w-[60vw]
-        h-[85%] top-16 flex flex-col'
+        className='fixed bg-gray-100 rounded-lg shadow-lg w-[90vw] sm:w-[80vw] md:w-[70vw] lg:w-[60vw]
+        max-h-[85%] top-16 flex flex-col'
       >
         <div
-          className='flex items-end justify-between text-2xl text-gray-800 hover:text-gray-500
-          cursor-pointer'
+          className='flex items-end justify-between text-2xl'
         >
-          <div className='ml-auto mr-3 my-1' onClick={closeInfoPopup}>
+          <div
+            onClick={closeInfoPopup}
+            className='ml-auto mr-3 my-1 cursor-pointer text-gray-800 hover:text-gray-500'
+          >
             &#10005;
           </div>
         </div>
 
-        <div className='px-12 pt-5 h-[90%] sm:h-[92%] w-full overflow-y-auto'>
+        <div className='px-8 sm:px-10 pb-8 pt-1 mb-2 mt-3 sm:mt-5 w-full overflow-y-auto'>
 
-          <p className='mb-3 text-base sm:text-lg'>
+          <p className='mb-7 text-lg'>
             Denna sida är ett gratis verktyg för att ta reda på möjliga färger på avkommor mellan
             kaniner. Förhoppningen är att detta ska kunna användas som ett hjälpmedel, både för
             erfarna och mindre erfarna uppfödare, när man själv inte kan eller orkar räkna ut vilka
             färger som kan uppstå i en kull.
           </p>
 
-          <p className='mb-5 text-base sm:text-lg'>
-            Det främsta målet har varit att hålla sidan simpel till en början för att den ska vara
-            lätt att använda, men fler funktioner kan komma att läggas till längre fram.
-          </p>
-
-
           <InfoDropdown
             headingHtml={<p className='text-lg font-medium'>Bra att veta</p>}
             contentHtml={
-              <div className='my-2'>
+              <div className='mt-2 mb-4'>
                 <p className='mb-3'>
                   Tänk på att resultatet inte är garanterat att vara
                   korrekt om de fulla genkoderna inte har fyllts i. Detta beror på att programmet i
@@ -74,16 +70,11 @@ export function InfoPopup({ setInfoIsOpen }) {
           <InfoDropdown
             headingHtml={<p className='text-lg font-medium'>"Okända genkoder"</p>}
             contentHtml={
-              <div className='my-2'>
-                <p className='mb-3'>
+              <div className='mt-2 mb-4'>
+                <p>
                   Under "Okända genkoder" samlas alla genkoder som inte kan kopplas till en färg i
                   databasen. Oftast beror detta på för många okända gener i genkoden, men i vissa
                   fall är det för att den aktuella färgen inte har lagts till ännu.
-                </p>
-
-                <p>
-                  Detta gäller främst mer komplexa färger som jag inte med säkerhet har kunnat
-                  namnge. Dessa kommer dock också läggas till inom kort.
                 </p>
               </div>
             }
@@ -92,7 +83,7 @@ export function InfoPopup({ setInfoIsOpen }) {
           <InfoDropdown
             headingHtml={<p className='text-lg font-medium'>Grundläggande genetik</p>}
             contentHtml={
-              <div className='my-2'>
+              <div className='mt-2'>
                 <p className='mb-3'>
                   Algoritmerna som programmet använder sig av är baserade på grundläggande genetiska
                   principer. Kaninfärger beskrivs genetiskt med bokstavskoder, huvudsakligen A, B,
@@ -101,7 +92,7 @@ export function InfoPopup({ setInfoIsOpen }) {
                   av olika variationer av dessa som alla olika pälsfärger kan uppstå.
                 </p>
 
-                <div class='flex justify-center items-center py-5'>
+                <div className='flex justify-center items-center py-5'>
                   <img
                     src={gene_code_description}
                     className="w-[90%] sm:w-[60%]"
@@ -120,25 +111,34 @@ export function InfoPopup({ setInfoIsOpen }) {
                 </p>
 
                 <p>
-                  &#8226; <span className='font-medium'>A-locus</span>: A (full pigmentering),
-                  a<sup>chi</sup> (chinchilla), a<sup>m</sup> (zobel/siames), a<sup>n</sup> (ryss),
-                  a (vit rödögd).
+                  &#8226; <span className='font-medium'>A-locus</span>:
+                  A&nbsp;(full&nbsp;pigmentering),
+                  a<sup>chi</sup>&nbsp;(chinchilla),
+                  a<sup>m</sup>&nbsp;(zobel/siames),
+                  a<sup>n</sup>&nbsp;(ryss),
+                  a&nbsp;(vit&nbsp;rödögd).
                 </p>
                 <p>
-                  &#8226; <span className='font-medium'>B-locus</span>: B (full pigmentering),
-                  b<sup>j</sup> (japanteckning), b (gul).
+                  &#8226; <span className='font-medium'>B-locus</span>:
+                  B&nbsp;(full&nbsp;pigmentering),
+                  b<sup>j</sup>&nbsp;(japanteckning),
+                  b&nbsp;(gul).
                 </p>
                 <p>
-                  &#8226; <span className='font-medium'>C-locus</span>: C (full pigmentering),
-                  c (brun).
+                  &#8226; <span className='font-medium'>C-locus</span>:
+                  C&nbsp;(full&nbsp;pigmentering),
+                  c&nbsp;(brun).
                 </p>
                 <p>
-                  &#8226; <span className='font-medium'>D-locus</span>: D (full pigmentering),
-                  d (blå).
+                  &#8226; <span className='font-medium'>D-locus</span>:
+                  D&nbsp;(full&nbsp;pigmentering),
+                  d&nbsp;(blå).
                 </p>
                 <p>
-                  &#8226; <span className='font-medium'>G-locus</span>: G (Viltfärgad),
-                  g<sup>o</sup> (otter), g (helfärgad)
+                  &#8226; <span className='font-medium'>G-locus</span>:
+                  G&nbsp;(Viltfärgad),
+                  g<sup>o</sup>&nbsp;(otter),
+                  g&nbsp;(helfärgad)
                 </p>
 
                 <p className='mb-3 mt-3'>
@@ -156,7 +156,7 @@ export function InfoPopup({ setInfoIsOpen }) {
                   på D-locus se ut såhär:
                 </p>
 
-                <div class='flex justify-center items-center py-5'>
+                <div className='flex justify-center items-center py-5'>
                   <img src={gene_calc} className="w-[90%] sm:w-[60%]" alt="Calculation of "/>
                 </div>
               </div>

@@ -42,7 +42,7 @@ export function InfoDropdown({ headingHtml, contentHtml }) {
       </div>
       {isOpen && (
         <div
-          className="pl-5 py-2 pb-2 tracking-wide shadow-[inset_0_8px_1px_-8px_rgba(0,0,0,0.3)]"
+          className="px-2 py-2 pb-2 tracking-wide shadow-[inset_0_8px_1px_-8px_rgba(0,0,0,0.3)]"
         >
           {contentHtml}
         </div>

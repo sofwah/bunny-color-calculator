@@ -37,7 +37,7 @@ export function ColorDropdown({ label, content }) {
       >
         <ArrowIcon isOpen={isOpen} />
         <p
-          className="ml-2 font-medium tracking-wide" dangerouslySetInnerHTML={{ __html: label }}
+          className="ml-2 mr-1 font-medium tracking-wide" dangerouslySetInnerHTML={{ __html: label }}
         ></p>
       </div>
       {isOpen && (
